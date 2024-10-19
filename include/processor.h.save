@@ -1,0 +1,8 @@
+#ifndef PROCESSOR
+#define PROCESSOR
+
+#include "error_keys.h"
+
+ErrorKeys InitCodeBuffer(const char* filename, const char* typestream, FILE* stream);
+
+#endif
