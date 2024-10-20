@@ -2,11 +2,15 @@
 #include <stdlib.h>
 #include <stdarg.h>
 #include <sys/stat.h>
+#include <string.h>
+
+#define COLOR
 
 #include "assembler.h"
 #include "color.h"
 #include "error_keys.h"
 #include "struct_file.h"
+
 
 
 #define INIT_FILE(arg) {                                                           \
@@ -21,15 +25,19 @@ const int CODE_SIZE = 20;
 
 int main(int argc, char* argv[])
 {
-    printf("argc = %d\n", argc);
+    if (argc == 1)
+    {
+        printf(RED("enter human code file and machine code file as arguments of the command line, please <3"));
+        return 0;
+    }    
 
     const char* human_code = argv[1];
     printf("human_code = %s\n", human_code);
+    FileInf human   = {human_code,  NULL, "rb", 0};
+    INIT_FILE(&human);
     const char* machine_code = argv[2];
     printf("machine_code = %s\n", machine_code);
 
-    FileInf human   = {human_code,  NULL, "rb", 0};
-    INIT_FILE(&human);
 
     FileInf machine = {machine_code, NULL, "wb", 0};
     INIT_FILE(&machine);
