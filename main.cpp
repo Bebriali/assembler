@@ -4,22 +4,10 @@
 #include <sys/stat.h>
 #include <string.h>
 
-#define COLOR
-
 #include "assembler.h"
 #include "color.h"
 #include "error_keys.h"
 #include "struct_file.h"
-
-
-
-#define INIT_FILE(arg) {                                                           \
-                                if(int a = InitCodeFile(arg) != NO_ERRORS) \
-                                {                                                       \
-                                    printf(RED("error in file \nerror_code: %d\n"), a); \
-                                }                                                       \
-                            }
-
 
 const int CODE_SIZE = 20;
 
@@ -29,20 +17,18 @@ int main(int argc, char* argv[])
     {
         printf(RED("enter human code file and machine code file as arguments of the command line, please <3"));
         return 0;
-    }    
+    }
 
-    const char* human_code = argv[1];
-    printf("human_code = %s\n", human_code);
-    FileInf human   = {human_code,  NULL, "rb", 0};
-    INIT_FILE(&human);
-    const char* machine_code = argv[2];
-    printf("machine_code = %s\n", machine_code);
-
-
-    FileInf machine = {machine_code, NULL, "wb", 0};
-    INIT_FILE(&machine);
+    FileInf human   = CreateStructFile(argv[1], "rb");
+    FileInf machine = CreateStructFile(argv[2], "wb");
 
     char* buffer = (char*) calloc(human.size, sizeof(char));
+    if (buffer == NULL)
+    {
+        printf(RED("error in buffer calloc\n"));
+        return 0;
+    }
+
     size_t code_size = GetBuffer(buffer, &human);
     if (code_size == 0)
     {
@@ -54,15 +40,24 @@ int main(int argc, char* argv[])
     }
 
     char** buffer_cut = (char**) calloc(code_size, sizeof(char));
+    if (buffer_cut == NULL)
+    {
+        printf(RED("error in buffer_cut calloc\n"));
+        return 0;
+    }
+
     CutBuffer(buffer_cut, buffer, code_size, human.size);
 
     int* code = MakeCode(&human, buffer_cut, buffer, code_size);
+    free(buffer_cut);
+    free(buffer);
+
     for (size_t i = 0; i < code_size; i++)
     {
         printf(CYAN("code[%d] = %d\n"), i, code[i]);
     }
-
     WriteResult(&machine, code, code_size);
+    free(code);
 
     fclose(machine.stream);
     fclose(human.stream);

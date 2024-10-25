@@ -11,7 +11,9 @@ enum Commands
     ADD = 5,
     MUL = 6,
     DIV = 7,
-    OUT = 8,
+    IN = 8,
+    OUT = 9,
+    SUB = 10,
     HLT = -1,
     STX_ERR = 666
 };

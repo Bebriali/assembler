@@ -1,6 +1,8 @@
 #ifndef COLOR_H
 #define COLOR_H
 
+#define COLOR
+
 #define RED_C     "\x1b[31m"
 #define GREEN_C   "\x1b[32m"
 #define YELLOW_C  "\x1b[33m"
@@ -18,7 +20,7 @@
         #define MAGENTA(arg) MAGENTA_C arg RESET
         #define CYAN(arg)    CYAN_C    arg RESET
 
-    #else   
+    #else
 
         #define RED(arg)     arg
         #define GREEN(arg)   arg

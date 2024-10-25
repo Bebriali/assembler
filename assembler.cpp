@@ -10,8 +10,17 @@
 #include "commands_def.h"
 #include "error_keys.h"
 
-ErrorKeys InitCodeFile(struct FileInf* file)
+FileInf CreateStructFile(const char* filename, const char* type)
 {
+    struct FileInf file = {.name = filename, .stream = NULL, .typestream = type, .size = 0};
+    INIT_FILE(&file, file.name, file.typestream);
+
+    return file;
+}
+
+ErrorKeys InitCodeFile(struct FileInf* file, const char* filename, const char* typestream)
+{
+    *file = {.name = filename,  .stream = NULL, .typestream = typestream, .size = 0};
     file->stream = fopen(file->name, file->typestream);
     struct stat st = {};
     stat(file->name, &st);
@@ -98,10 +107,8 @@ int* MakeCode(FileInf* file, char** buffer_cut, char* buffer, size_t buffer_cut_
         printf(YELLOW("buffer_cut[%d] = '%s'\n"), i, buffer_cut[i]);
     }
     printf("\n");
-    printf(RED("LOSHARA EBANAYA\n"));
 
-
-    int* code = (int*) calloc(buffer_cut_size, sizeof(int));
+    int* code = (int*) calloc(buffer_cut_size, sizeof(int)); // check
 
     size_t ip = 0;
     while (ip < buffer_cut_size)
@@ -119,7 +126,8 @@ int* MakeCode(FileInf* file, char** buffer_cut, char* buffer, size_t buffer_cut_
 
         if (CommandLength((Commands)code[ip]) == 2)
         {
-            code[++ip] = GetValue(buffer_cut[ip]);
+            ip++;
+            code[ip] = GetValue(buffer_cut[ip]);
         }
 
         ip++;
@@ -139,8 +147,11 @@ ErrorKeys WriteResult(FileInf* file, int* code, size_t code_size)
 {
     for (size_t i = 0; i < code_size; i++)
     {
-        fprintf(file->stream, "%d ", code[i]);
+        printf("%d ", code[i]);
     }
+    printf("\n\n");
+    fwrite(&code_size, sizeof(int), 1, file->stream);
+    fwrite(code, sizeof(int), code_size, file->stream);
 
     return NO_ERRORS;
 }

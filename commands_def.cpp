@@ -48,6 +48,10 @@ Commands CommandDefine(const char* command)
     {
         return DIV;
     }
+    if (strcmp(command, "IN") == 0)
+    {
+        return IN;
+    }
     if (strcmp(command, "OUT") == 0)
     {
         return OUT;
