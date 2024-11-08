@@ -1,0 +1,3737 @@
+
+--------------------------------------------------
+TXLib предупреждает:
+
+Программа: C:\Users\Мария\Desktop\assembler\prog.exe,
+
+ВНЕЗАПНО: Нарушение доступа к памяти.
+
+#1: Исключение EXCEPTION_ACCESS_VIOLATION (0xC0000005) при выполнении кода по адресу 0x75DB9712 в функции strcmp(). Попытка прочесть данные по адресу NULL в модуле C:\WINDOWS\System32\msvcrt.dll. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+#1: TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400], Instance: 0x005082FC (32-bit), Flags: Cmdre0, Thread: 0x1FDC (Main), GetLastError(): 183 (Невозможно создать файл, так как он уже существует). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x75DB9712 in C:\WINDOWS\System32\msvcrt.dll: strcmp()
+
+# 1 0x0042F1B9 in C:\Users\Мария\Desktop\assembler\prog.exe: GetArg() at C:/Users/Мария/Desktop/assembler/commands_def.cpp (91):
+
+     89:         if (command[i] == ':')
+     90:         {
+=>   91:             return (int) DefLabel(command, table);
+     92:         }
+     93:     }
+
+# 2 0x0042EDC8 in C:\Users\Мария\Desktop\assembler\prog.exe: HandleArgs() at C:/Users/Мария/Desktop/assembler/assembler.cpp (259):
+
+    257:             code[ip_fixed + 1] = code[ip_fixed + 1] | 2;
+    258:             printf(GREEN("code[%d] = %d\n"), ip_fixed + 1, code[ip_fixed + 1]);
+=>  259:             code[*ip + ap + 1] = GetArg(buffer_cut[*bp + ap], table);
+    260:         }
+    261:     }
+
+# 3 0x0042E86F in C:\Users\Мария\Desktop\assembler\prog.exe: MakeCode() at C:/Users/Мария/Desktop/assembler/assembler.cpp (130):
+
+    128:         printf(CYAN("buffer_cut[%d] = %s\n"), bp, buffer_cut[bp]);
+    129: 
+=>  130:         HandleArgs(code, &ip, buffer_cut, &bp, &table);
+    131: 
+    132:         //CodeDump(code, ip);
+
+# 4 0x0042C3C0 in C:\Users\Мария\Desktop\assembler\prog.exe: main() at C:/Users/Мария/Desktop/assembler/main.cpp (53):
+
+     51:     CutBuffer(buffer_cut, buffer, code_size, human.size);
+     52: 
+=>   53:     int* code = MakeCode(&human, buffer_cut, buffer, &code_size);
+     54:     //printf("code = %d\n", code);
+     55:     if (code == NULL)
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\users\мария\codeblocks\mingw\include\txlib.h
+Compiled:	Oct 28 2024 13:57:12, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Oct 28 2024 13:58:47
+
+Run file:	C:\Users\Мария\Desktop\assembler\prog.exe
+Directory:	C:\Users\Мария\Desktop\assembler
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib соболезнует...
+
+Программа: C:\Users\Мария\Desktop\assembler\prog.exe,
+
+ВНЕЗАПНО: signal (11, 0x00): SIGSEGV: Доступ по неверному указателю. Ставьте ассерты! 
+
+Нарушение доступа к памяти.
+
+#1: Исключение EXCEPTION_ACCESS_VIOLATION (0xC0000005) при выполнении кода по адресу 0x75DB9712 в функции strcmp(). Попытка прочесть данные по адресу NULL в модуле C:\WINDOWS\System32\msvcrt.dll. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+С помощью функции signal() вы можете сами обработать эту ошибку.
+
+#2: TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400], Instance: 0x005082FC (32-bit), Flags: Cmdre0, Thread: 0x1FDC (Main), GetLastError(): 183 (Невозможно создать файл, так как он уже существует). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x75DB9712 in C:\WINDOWS\System32\msvcrt.dll: strcmp()
+
+# 1 0x0042F1B9 in C:\Users\Мария\Desktop\assembler\prog.exe: GetArg() at C:/Users/Мария/Desktop/assembler/commands_def.cpp (91):
+
+     89:         if (command[i] == ':')
+     90:         {
+=>   91:             return (int) DefLabel(command, table);
+     92:         }
+     93:     }
+
+# 2 0x0042EDC8 in C:\Users\Мария\Desktop\assembler\prog.exe: HandleArgs() at C:/Users/Мария/Desktop/assembler/assembler.cpp (259):
+
+    257:             code[ip_fixed + 1] = code[ip_fixed + 1] | 2;
+    258:             printf(GREEN("code[%d] = %d\n"), ip_fixed + 1, code[ip_fixed + 1]);
+=>  259:             code[*ip + ap + 1] = GetArg(buffer_cut[*bp + ap], table);
+    260:         }
+    261:     }
+
+# 3 0x0042E86F in C:\Users\Мария\Desktop\assembler\prog.exe: MakeCode() at C:/Users/Мария/Desktop/assembler/assembler.cpp (130):
+
+    128:         printf(CYAN("buffer_cut[%d] = %s\n"), bp, buffer_cut[bp]);
+    129: 
+=>  130:         HandleArgs(code, &ip, buffer_cut, &bp, &table);
+    131: 
+    132:         //CodeDump(code, ip);
+
+# 4 0x0042C3C0 in C:\Users\Мария\Desktop\assembler\prog.exe: main() at C:/Users/Мария/Desktop/assembler/main.cpp (53):
+
+     51:     CutBuffer(buffer_cut, buffer, code_size, human.size);
+     52: 
+=>   53:     int* code = MakeCode(&human, buffer_cut, buffer, &code_size);
+     54:     //printf("code = %d\n", code);
+     55:     if (code == NULL)
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\users\мария\codeblocks\mingw\include\txlib.h
+Compiled:	Oct 28 2024 13:57:12, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Oct 28 2024 13:58:46
+
+Run file:	C:\Users\Мария\Desktop\assembler\prog.exe
+Directory:	C:\Users\Мария\Desktop\assembler
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib предупреждает:
+
+Программа: C:\Users\Мария\Desktop\assembler\prog.exe,
+
+ВНЕЗАПНО: Нарушение доступа к памяти.
+
+#1: Исключение EXCEPTION_ACCESS_VIOLATION (0xC0000005) при выполнении кода по адресу 0x75DB9712 в функции strcmp(). Попытка прочесть данные по адресу NULL в модуле C:\WINDOWS\System32\msvcrt.dll. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+#1: TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400], Instance: 0x005082FC (32-bit), Flags: Cmdre0, Thread: 0x5154 (Main), GetLastError(): 183 (Невозможно создать файл, так как он уже существует). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x75DB9712 in C:\WINDOWS\System32\msvcrt.dll: strcmp()
+
+# 1 0x0042F1B9 in C:\Users\Мария\Desktop\assembler\prog.exe: GetArg() at C:/Users/Мария/Desktop/assembler/commands_def.cpp (91):
+
+     89:         if (command[i] == ':')
+     90:         {
+=>   91:             return (int) DefLabel(command, table);
+     92:         }
+     93:     }
+
+# 2 0x0042EDC8 in C:\Users\Мария\Desktop\assembler\prog.exe: HandleArgs() at C:/Users/Мария/Desktop/assembler/assembler.cpp (259):
+
+    257:             code[ip_fixed + 1] = code[ip_fixed + 1] | 2;
+    258:             printf(GREEN("code[%d] = %d\n"), ip_fixed + 1, code[ip_fixed + 1]);
+=>  259:             code[*ip + ap + 1] = GetArg(buffer_cut[*bp + ap], table);
+    260:         }
+    261:     }
+
+# 3 0x0042E86F in C:\Users\Мария\Desktop\assembler\prog.exe: MakeCode() at C:/Users/Мария/Desktop/assembler/assembler.cpp (130):
+
+    128:         printf(CYAN("buffer_cut[%d] = %s\n"), bp, buffer_cut[bp]);
+    129: 
+=>  130:         HandleArgs(code, &ip, buffer_cut, &bp, &table);
+    131: 
+    132:         //CodeDump(code, ip);
+
+# 4 0x0042C3C0 in C:\Users\Мария\Desktop\assembler\prog.exe: main() at C:/Users/Мария/Desktop/assembler/main.cpp (53):
+
+     51:     CutBuffer(buffer_cut, buffer, code_size, human.size);
+     52: 
+=>   53:     int* code = MakeCode(&human, buffer_cut, buffer, &code_size);
+     54:     //printf("code = %d\n", code);
+     55:     if (code == NULL)
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\users\мария\codeblocks\mingw\include\txlib.h
+Compiled:	Oct 28 2024 13:59:39, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Oct 28 2024 13:59:46
+
+Run file:	C:\Users\Мария\Desktop\assembler\prog.exe
+Directory:	C:\Users\Мария\Desktop\assembler
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib соболезнует...
+
+Программа: C:\Users\Мария\Desktop\assembler\prog.exe,
+
+ВНЕЗАПНО: signal (11, 0x00): SIGSEGV: Доступ по неверному указателю. Ставьте ассерты! 
+
+Нарушение доступа к памяти.
+
+#1: Исключение EXCEPTION_ACCESS_VIOLATION (0xC0000005) при выполнении кода по адресу 0x75DB9712 в функции strcmp(). Попытка прочесть данные по адресу NULL в модуле C:\WINDOWS\System32\msvcrt.dll. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+С помощью функции signal() вы можете сами обработать эту ошибку.
+
+#2: TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400], Instance: 0x005082FC (32-bit), Flags: Cmdre0, Thread: 0x5154 (Main), GetLastError(): 183 (Невозможно создать файл, так как он уже существует). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x75DB9712 in C:\WINDOWS\System32\msvcrt.dll: strcmp()
+
+# 1 0x0042F1B9 in C:\Users\Мария\Desktop\assembler\prog.exe: GetArg() at C:/Users/Мария/Desktop/assembler/commands_def.cpp (91):
+
+     89:         if (command[i] == ':')
+     90:         {
+=>   91:             return (int) DefLabel(command, table);
+     92:         }
+     93:     }
+
+# 2 0x0042EDC8 in C:\Users\Мария\Desktop\assembler\prog.exe: HandleArgs() at C:/Users/Мария/Desktop/assembler/assembler.cpp (259):
+
+    257:             code[ip_fixed + 1] = code[ip_fixed + 1] | 2;
+    258:             printf(GREEN("code[%d] = %d\n"), ip_fixed + 1, code[ip_fixed + 1]);
+=>  259:             code[*ip + ap + 1] = GetArg(buffer_cut[*bp + ap], table);
+    260:         }
+    261:     }
+
+# 3 0x0042E86F in C:\Users\Мария\Desktop\assembler\prog.exe: MakeCode() at C:/Users/Мария/Desktop/assembler/assembler.cpp (130):
+
+    128:         printf(CYAN("buffer_cut[%d] = %s\n"), bp, buffer_cut[bp]);
+    129: 
+=>  130:         HandleArgs(code, &ip, buffer_cut, &bp, &table);
+    131: 
+    132:         //CodeDump(code, ip);
+
+# 4 0x0042C3C0 in C:\Users\Мария\Desktop\assembler\prog.exe: main() at C:/Users/Мария/Desktop/assembler/main.cpp (53):
+
+     51:     CutBuffer(buffer_cut, buffer, code_size, human.size);
+     52: 
+=>   53:     int* code = MakeCode(&human, buffer_cut, buffer, &code_size);
+     54:     //printf("code = %d\n", code);
+     55:     if (code == NULL)
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\users\мария\codeblocks\mingw\include\txlib.h
+Compiled:	Oct 28 2024 13:59:39, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Oct 28 2024 13:59:45
+
+Run file:	C:\Users\Мария\Desktop\assembler\prog.exe
+Directory:	C:\Users\Мария\Desktop\assembler
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib предупреждает:
+
+Программа: C:\Users\Мария\Desktop\assembler\prog.exe,
+
+ВНЕЗАПНО: Нарушение доступа к памяти.
+
+#1: Исключение EXCEPTION_ACCESS_VIOLATION (0xC0000005) при выполнении кода по адресу 0x75DB9712 в функции strcmp(). Попытка прочесть данные по адресу NULL в модуле C:\WINDOWS\System32\msvcrt.dll. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+#1: TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400], Instance: 0x005082FC (32-bit), Flags: Cmdre0, Thread: 0x5390 (Main), GetLastError(): 183 (Невозможно создать файл, так как он уже существует). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x75DB9712 in C:\WINDOWS\System32\msvcrt.dll: strcmp()
+
+# 1 0x0042F1B9 in C:\Users\Мария\Desktop\assembler\prog.exe: GetArg() at C:/Users/Мария/Desktop/assembler/commands_def.cpp (91):
+
+     89:         if (command[i] == ':')
+     90:         {
+=>   91:             return (int) DefLabel(command, table);
+     92:         }
+     93:     }
+
+# 2 0x0042EDC8 in C:\Users\Мария\Desktop\assembler\prog.exe: HandleArgs() at C:/Users/Мария/Desktop/assembler/assembler.cpp (259):
+
+    257:         if (isalpha(buffer_cut[*bp + ap][0]))
+    258:         {
+=>  259:             code[ip_fixed + 1] = code[ip_fixed + 1] | 2;
+    260:             printf(GREEN("code[%d] = %d\n"), ip_fixed + 1, code[ip_fixed + 1]);
+    261:             code[*ip + ap + 1] = GetArg(buffer_cut[*bp + ap], table);
+
+# 3 0x0042E86F in C:\Users\Мария\Desktop\assembler\prog.exe: MakeCode() at C:/Users/Мария/Desktop/assembler/assembler.cpp (130):
+
+    128:     while (bp < *buffer_cut_size)
+    129:     {
+=>  130:         printf(CYAN("buffer_cut[%d] = %s\n"), bp, buffer_cut[bp]);
+    131: 
+    132:         HandleArgs(code, &ip, buffer_cut, &bp, &table);
+
+# 4 0x0042C3C0 in C:\Users\Мария\Desktop\assembler\prog.exe: main() at C:/Users/Мария/Desktop/assembler/main.cpp (53):
+
+     51:     CutBuffer(buffer_cut, buffer, code_size, human.size);
+     52: 
+=>   53:     int* code = MakeCode(&human, buffer_cut, buffer, &code_size);
+     54:     //printf("code = %d\n", code);
+     55:     if (code == NULL)
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\users\мария\codeblocks\mingw\include\txlib.h
+Compiled:	Oct 28 2024 13:59:39, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Oct 28 2024 14:06:02
+
+Run file:	C:\Users\Мария\Desktop\assembler\prog.exe
+Directory:	C:\Users\Мария\Desktop\assembler
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib соболезнует...
+
+Программа: C:\Users\Мария\Desktop\assembler\prog.exe,
+
+ВНЕЗАПНО: signal (11, 0x00): SIGSEGV: Доступ по неверному указателю. Ставьте ассерты! 
+
+Нарушение доступа к памяти.
+
+#1: Исключение EXCEPTION_ACCESS_VIOLATION (0xC0000005) при выполнении кода по адресу 0x75DB9712 в функции strcmp(). Попытка прочесть данные по адресу NULL в модуле C:\WINDOWS\System32\msvcrt.dll. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+С помощью функции signal() вы можете сами обработать эту ошибку.
+
+#2: TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400], Instance: 0x005082FC (32-bit), Flags: Cmdre0, Thread: 0x5390 (Main), GetLastError(): 183 (Невозможно создать файл, так как он уже существует). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x75DB9712 in C:\WINDOWS\System32\msvcrt.dll: strcmp()
+
+# 1 0x0042F1B9 in C:\Users\Мария\Desktop\assembler\prog.exe: GetArg() at C:/Users/Мария/Desktop/assembler/commands_def.cpp (91):
+
+     89:         if (command[i] == ':')
+     90:         {
+=>   91:             return (int) DefLabel(command, table);
+     92:         }
+     93:     }
+
+# 2 0x0042EDC8 in C:\Users\Мария\Desktop\assembler\prog.exe: HandleArgs() at C:/Users/Мария/Desktop/assembler/assembler.cpp (259):
+
+    257:         if (isalpha(buffer_cut[*bp + ap][0]))
+    258:         {
+=>  259:             code[ip_fixed + 1] = code[ip_fixed + 1] | 2;
+    260:             printf(GREEN("code[%d] = %d\n"), ip_fixed + 1, code[ip_fixed + 1]);
+    261:             code[*ip + ap + 1] = GetArg(buffer_cut[*bp + ap], table);
+
+# 3 0x0042E86F in C:\Users\Мария\Desktop\assembler\prog.exe: MakeCode() at C:/Users/Мария/Desktop/assembler/assembler.cpp (130):
+
+    128:     while (bp < *buffer_cut_size)
+    129:     {
+=>  130:         printf(CYAN("buffer_cut[%d] = %s\n"), bp, buffer_cut[bp]);
+    131: 
+    132:         HandleArgs(code, &ip, buffer_cut, &bp, &table);
+
+# 4 0x0042C3C0 in C:\Users\Мария\Desktop\assembler\prog.exe: main() at C:/Users/Мария/Desktop/assembler/main.cpp (53):
+
+     51:     CutBuffer(buffer_cut, buffer, code_size, human.size);
+     52: 
+=>   53:     int* code = MakeCode(&human, buffer_cut, buffer, &code_size);
+     54:     //printf("code = %d\n", code);
+     55:     if (code == NULL)
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\users\мария\codeblocks\mingw\include\txlib.h
+Compiled:	Oct 28 2024 13:59:39, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Oct 28 2024 14:06:02
+
+Run file:	C:\Users\Мария\Desktop\assembler\prog.exe
+Directory:	C:\Users\Мария\Desktop\assembler
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib предупреждает:
+
+Программа: C:\Users\Мария\Desktop\assembler\prog.exe,
+
+ВНЕЗАПНО: Нарушение доступа к памяти.
+
+#1: Исключение EXCEPTION_ACCESS_VIOLATION (0xC0000005) при выполнении кода по адресу 0x75DB9712 в функции strcmp(). Попытка прочесть данные по адресу NULL в модуле C:\WINDOWS\System32\msvcrt.dll. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+#1: TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400], Instance: 0x005082FC (32-bit), Flags: Cmdre0, Thread: 0x12CC (Main), GetLastError(): 183 (Невозможно создать файл, так как он уже существует). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x75DB9712 in C:\WINDOWS\System32\msvcrt.dll: strcmp()
+
+# 1 0x0042F1B9 in C:\Users\Мария\Desktop\assembler\prog.exe: GetArg() at C:/Users/Мария/Desktop/assembler/commands_def.cpp (91):
+
+     89:         if (command[i] == ':')
+     90:         {
+=>   91:             return (int) DefLabel(command, table);
+     92:         }
+     93:     }
+
+# 2 0x0042EDC8 in C:\Users\Мария\Desktop\assembler\prog.exe: HandleArgs() at C:/Users/Мария/Desktop/assembler/assembler.cpp (259):
+
+    257:         if (isalpha(buffer_cut[*bp + ap][0]))
+    258:         {
+=>  259:             code[ip_fixed + 1] = code[ip_fixed + 1] | 2;
+    260:             printf(GREEN("code[%d] = %d\n"), ip_fixed + 1, code[ip_fixed + 1]);
+    261:             code[*ip + ap + 1] = GetArg(buffer_cut[*bp + ap], table);
+
+# 3 0x0042E86F in C:\Users\Мария\Desktop\assembler\prog.exe: MakeCode() at C:/Users/Мария/Desktop/assembler/assembler.cpp (130):
+
+    128:     while (bp < *buffer_cut_size)
+    129:     {
+=>  130:         printf(CYAN("buffer_cut[%d] = %s\n"), bp, buffer_cut[bp]);
+    131: 
+    132:         HandleArgs(code, &ip, buffer_cut, &bp, &table);
+
+# 4 0x0042C3C0 in C:\Users\Мария\Desktop\assembler\prog.exe: main() at C:/Users/Мария/Desktop/assembler/main.cpp (53):
+
+     51:     CutBuffer(buffer_cut, buffer, code_size, human.size);
+     52: 
+=>   53:     int* code = MakeCode(&human, buffer_cut, buffer, &code_size);
+     54:     //printf("code = %d\n", code);
+     55:     if (code == NULL)
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\users\мария\codeblocks\mingw\include\txlib.h
+Compiled:	Oct 28 2024 13:59:39, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Oct 28 2024 14:07:20
+
+Run file:	C:\Users\Мария\Desktop\assembler\prog.exe
+Directory:	C:\Users\Мария\Desktop\assembler
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib соболезнует...
+
+Программа: C:\Users\Мария\Desktop\assembler\prog.exe,
+
+ВНЕЗАПНО: signal (11, 0x00): SIGSEGV: Доступ по неверному указателю. Ставьте ассерты! 
+
+Нарушение доступа к памяти.
+
+#1: Исключение EXCEPTION_ACCESS_VIOLATION (0xC0000005) при выполнении кода по адресу 0x75DB9712 в функции strcmp(). Попытка прочесть данные по адресу NULL в модуле C:\WINDOWS\System32\msvcrt.dll. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+С помощью функции signal() вы можете сами обработать эту ошибку.
+
+#2: TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400], Instance: 0x005082FC (32-bit), Flags: Cmdre0, Thread: 0x12CC (Main), GetLastError(): 183 (Невозможно создать файл, так как он уже существует). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x75DB9712 in C:\WINDOWS\System32\msvcrt.dll: strcmp()
+
+# 1 0x0042F1B9 in C:\Users\Мария\Desktop\assembler\prog.exe: GetArg() at C:/Users/Мария/Desktop/assembler/commands_def.cpp (91):
+
+     89:         if (command[i] == ':')
+     90:         {
+=>   91:             return (int) DefLabel(command, table);
+     92:         }
+     93:     }
+
+# 2 0x0042EDC8 in C:\Users\Мария\Desktop\assembler\prog.exe: HandleArgs() at C:/Users/Мария/Desktop/assembler/assembler.cpp (259):
+
+    257:         if (isalpha(buffer_cut[*bp + ap][0]))
+    258:         {
+=>  259:             code[ip_fixed + 1] = code[ip_fixed + 1] | 2;
+    260:             printf(GREEN("code[%d] = %d\n"), ip_fixed + 1, code[ip_fixed + 1]);
+    261:             code[*ip + ap + 1] = GetArg(buffer_cut[*bp + ap], table);
+
+# 3 0x0042E86F in C:\Users\Мария\Desktop\assembler\prog.exe: MakeCode() at C:/Users/Мария/Desktop/assembler/assembler.cpp (130):
+
+    128:     while (bp < *buffer_cut_size)
+    129:     {
+=>  130:         printf(CYAN("buffer_cut[%d] = %s\n"), bp, buffer_cut[bp]);
+    131: 
+    132:         HandleArgs(code, &ip, buffer_cut, &bp, &table);
+
+# 4 0x0042C3C0 in C:\Users\Мария\Desktop\assembler\prog.exe: main() at C:/Users/Мария/Desktop/assembler/main.cpp (53):
+
+     51:     CutBuffer(buffer_cut, buffer, code_size, human.size);
+     52: 
+=>   53:     int* code = MakeCode(&human, buffer_cut, buffer, &code_size);
+     54:     //printf("code = %d\n", code);
+     55:     if (code == NULL)
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\users\мария\codeblocks\mingw\include\txlib.h
+Compiled:	Oct 28 2024 13:59:39, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Oct 28 2024 14:07:21
+
+Run file:	C:\Users\Мария\Desktop\assembler\prog.exe
+Directory:	C:\Users\Мария\Desktop\assembler
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib предупреждает:
+
+Программа: C:\Users\Мария\Desktop\assembler\prog.exe,
+
+ВНЕЗАПНО: Нарушение доступа к памяти.
+
+#1: Исключение EXCEPTION_ACCESS_VIOLATION (0xC0000005) при выполнении кода по адресу 0x75DB9712 в функции strcmp(). Попытка прочесть данные по адресу NULL в модуле C:\WINDOWS\System32\msvcrt.dll. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+#1: TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400], Instance: 0x005082FC (32-bit), Flags: Cmdre0, Thread: 0x11C (Main), GetLastError(): 183 (Невозможно создать файл, так как он уже существует). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x75DB9712 in C:\WINDOWS\System32\msvcrt.dll: strcmp()
+
+# 1 0x0042F1B9 in C:\Users\Мария\Desktop\assembler\prog.exe: GetArg() at C:/Users/Мария/Desktop/assembler/commands_def.cpp (91):
+
+     89:         if (command[i] == ':')
+     90:         {
+=>   91:             return (int) DefLabel(command, table);
+     92:         }
+     93:     }
+
+# 2 0x0042EDC8 in C:\Users\Мария\Desktop\assembler\prog.exe: HandleArgs() at C:/Users/Мария/Desktop/assembler/assembler.cpp (259):
+
+    257:         if (isalpha(buffer_cut[*bp + ap][0]))
+    258:         {
+=>  259:             code[ip_fixed + 1] = code[ip_fixed + 1] | 2;
+    260:             printf(GREEN("code[%d] = %d\n"), ip_fixed + 1, code[ip_fixed + 1]);
+    261:             code[*ip + ap + 1] = GetArg(buffer_cut[*bp + ap], table);
+
+# 3 0x0042E86F in C:\Users\Мария\Desktop\assembler\prog.exe: MakeCode() at C:/Users/Мария/Desktop/assembler/assembler.cpp (130):
+
+    128:     while (bp < *buffer_cut_size)
+    129:     {
+=>  130:         printf(CYAN("buffer_cut[%d] = %s\n"), bp, buffer_cut[bp]);
+    131: 
+    132:         HandleArgs(code, &ip, buffer_cut, &bp, &table);
+
+# 4 0x0042C3C0 in C:\Users\Мария\Desktop\assembler\prog.exe: main() at C:/Users/Мария/Desktop/assembler/main.cpp (53):
+
+     51:     CutBuffer(buffer_cut, buffer, code_size, human.size);
+     52: 
+=>   53:     int* code = MakeCode(&human, buffer_cut, buffer, &code_size);
+     54:     //printf("code = %d\n", code);
+     55:     if (code == NULL)
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\users\мария\codeblocks\mingw\include\txlib.h
+Compiled:	Oct 28 2024 13:59:39, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Oct 28 2024 14:08:21
+
+Run file:	C:\Users\Мария\Desktop\assembler\prog.exe
+Directory:	C:\Users\Мария\Desktop\assembler
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib соболезнует...
+
+Программа: C:\Users\Мария\Desktop\assembler\prog.exe,
+
+ВНЕЗАПНО: signal (11, 0x00): SIGSEGV: Доступ по неверному указателю. Ставьте ассерты! 
+
+Нарушение доступа к памяти.
+
+#1: Исключение EXCEPTION_ACCESS_VIOLATION (0xC0000005) при выполнении кода по адресу 0x75DB9712 в функции strcmp(). Попытка прочесть данные по адресу NULL в модуле C:\WINDOWS\System32\msvcrt.dll. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+С помощью функции signal() вы можете сами обработать эту ошибку.
+
+#2: TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400], Instance: 0x005082FC (32-bit), Flags: Cmdre0, Thread: 0x11C (Main), GetLastError(): 183 (Невозможно создать файл, так как он уже существует). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x75DB9712 in C:\WINDOWS\System32\msvcrt.dll: strcmp()
+
+# 1 0x0042F1B9 in C:\Users\Мария\Desktop\assembler\prog.exe: GetArg() at C:/Users/Мария/Desktop/assembler/commands_def.cpp (91):
+
+     89:         if (command[i] == ':')
+     90:         {
+=>   91:             return (int) DefLabel(command, table);
+     92:         }
+     93:     }
+
+# 2 0x0042EDC8 in C:\Users\Мария\Desktop\assembler\prog.exe: HandleArgs() at C:/Users/Мария/Desktop/assembler/assembler.cpp (259):
+
+    257:         if (isalpha(buffer_cut[*bp + ap][0]))
+    258:         {
+=>  259:             code[ip_fixed + 1] = code[ip_fixed + 1] | 2;
+    260:             printf(GREEN("code[%d] = %d\n"), ip_fixed + 1, code[ip_fixed + 1]);
+    261:             code[*ip + ap + 1] = GetArg(buffer_cut[*bp + ap], table);
+
+# 3 0x0042E86F in C:\Users\Мария\Desktop\assembler\prog.exe: MakeCode() at C:/Users/Мария/Desktop/assembler/assembler.cpp (130):
+
+    128:     while (bp < *buffer_cut_size)
+    129:     {
+=>  130:         printf(CYAN("buffer_cut[%d] = %s\n"), bp, buffer_cut[bp]);
+    131: 
+    132:         HandleArgs(code, &ip, buffer_cut, &bp, &table);
+
+# 4 0x0042C3C0 in C:\Users\Мария\Desktop\assembler\prog.exe: main() at C:/Users/Мария/Desktop/assembler/main.cpp (53):
+
+     51:     CutBuffer(buffer_cut, buffer, code_size, human.size);
+     52: 
+=>   53:     int* code = MakeCode(&human, buffer_cut, buffer, &code_size);
+     54:     //printf("code = %d\n", code);
+     55:     if (code == NULL)
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\users\мария\codeblocks\mingw\include\txlib.h
+Compiled:	Oct 28 2024 13:59:39, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Oct 28 2024 14:08:20
+
+Run file:	C:\Users\Мария\Desktop\assembler\prog.exe
+Directory:	C:\Users\Мария\Desktop\assembler
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib предупреждает:
+
+Программа: C:\Users\Мария\Desktop\assembler\prog.exe,
+
+ВНЕЗАПНО: Нарушение доступа к памяти.
+
+#1: Исключение EXCEPTION_ACCESS_VIOLATION (0xC0000005) при выполнении кода по адресу 0x75DB96B0 в функции strcmp(). Попытка прочесть данные по адресу NULL в модуле C:\WINDOWS\System32\msvcrt.dll. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+#1: TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400], Instance: 0x005082FC (32-bit), Flags: Cmdre0, Thread: 0x3AE8 (Main), GetLastError(): 183 (Невозможно создать файл, так как он уже существует). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x75DB96B0 in C:\WINDOWS\System32\msvcrt.dll: strcmp()
+
+# 1 0x0042EA8D in C:\Users\Мария\Desktop\assembler\prog.exe: HandleArgs() at C:/Users/Мария/Desktop/assembler/assembler.cpp (207):
+
+    205:     }
+    206: 
+=>  207:     while (CommandDefine(buffer_cut[++(*bp)], table, *ip) == STX_ERR && !CheckNewLabel(buffer_cut[*bp], table)) args_quantity++;
+    208:     *bp = bp_fixed;
+    209:     printf(RED("buffer_cut[%d] = %s\n"), *bp, buffer_cut[*bp]);
+
+# 2 0x0042E86F in C:\Users\Мария\Desktop\assembler\prog.exe: MakeCode() at C:/Users/Мария/Desktop/assembler/assembler.cpp (130):
+
+    128:         printf(CYAN("buffer_cut[%d] = %s\n"), bp, buffer_cut[bp]);
+    129: 
+=>  130:         HandleArgs(code, &ip, buffer_cut, &bp, &table);
+    131: 
+    132:         //CodeDump(code, ip);
+
+# 3 0x0042C3C0 in C:\Users\Мария\Desktop\assembler\prog.exe: main() at C:/Users/Мария/Desktop/assembler/main.cpp (53):
+
+     51:     CutBuffer(buffer_cut, buffer, code_size, human.size);
+     52: 
+=>   53:     int* code = MakeCode(&human, buffer_cut, buffer, &code_size);
+     54:     //printf("code = %d\n", code);
+     55:     if (code == NULL)
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\users\мария\codeblocks\mingw\include\txlib.h
+Compiled:	Oct 28 2024 14:13:22, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Oct 28 2024 14:13:38
+
+Run file:	C:\Users\Мария\Desktop\assembler\prog.exe
+Directory:	C:\Users\Мария\Desktop\assembler
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib соболезнует...
+
+Программа: C:\Users\Мария\Desktop\assembler\prog.exe,
+
+ВНЕЗАПНО: signal (11, 0x00): SIGSEGV: Доступ по неверному указателю. Ставьте ассерты! 
+
+Нарушение доступа к памяти.
+
+#1: Исключение EXCEPTION_ACCESS_VIOLATION (0xC0000005) при выполнении кода по адресу 0x75DB96B0 в функции strcmp(). Попытка прочесть данные по адресу NULL в модуле C:\WINDOWS\System32\msvcrt.dll. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+С помощью функции signal() вы можете сами обработать эту ошибку.
+
+#2: TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400], Instance: 0x005082FC (32-bit), Flags: Cmdre0, Thread: 0x3AE8 (Main), GetLastError(): 183 (Невозможно создать файл, так как он уже существует). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x75DB96B0 in C:\WINDOWS\System32\msvcrt.dll: strcmp()
+
+# 1 0x0042EA8D in C:\Users\Мария\Desktop\assembler\prog.exe: HandleArgs() at C:/Users/Мария/Desktop/assembler/assembler.cpp (207):
+
+    205:     }
+    206: 
+=>  207:     while (CommandDefine(buffer_cut[++(*bp)], table, *ip) == STX_ERR && !CheckNewLabel(buffer_cut[*bp], table)) args_quantity++;
+    208:     *bp = bp_fixed;
+    209:     printf(RED("buffer_cut[%d] = %s\n"), *bp, buffer_cut[*bp]);
+
+# 2 0x0042E86F in C:\Users\Мария\Desktop\assembler\prog.exe: MakeCode() at C:/Users/Мария/Desktop/assembler/assembler.cpp (130):
+
+    128:         printf(CYAN("buffer_cut[%d] = %s\n"), bp, buffer_cut[bp]);
+    129: 
+=>  130:         HandleArgs(code, &ip, buffer_cut, &bp, &table);
+    131: 
+    132:         //CodeDump(code, ip);
+
+# 3 0x0042C3C0 in C:\Users\Мария\Desktop\assembler\prog.exe: main() at C:/Users/Мария/Desktop/assembler/main.cpp (53):
+
+     51:     CutBuffer(buffer_cut, buffer, code_size, human.size);
+     52: 
+=>   53:     int* code = MakeCode(&human, buffer_cut, buffer, &code_size);
+     54:     //printf("code = %d\n", code);
+     55:     if (code == NULL)
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\users\мария\codeblocks\mingw\include\txlib.h
+Compiled:	Oct 28 2024 14:13:22, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Oct 28 2024 14:13:39
+
+Run file:	C:\Users\Мария\Desktop\assembler\prog.exe
+Directory:	C:\Users\Мария\Desktop\assembler
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib предупреждает:
+
+Программа: C:\Users\Мария\Desktop\assembler\prog.exe,
+
+ВНЕЗАПНО: Нарушение доступа к памяти.
+
+#1: Исключение EXCEPTION_ACCESS_VIOLATION (0xC0000005) при выполнении кода по адресу 0x75DB9712 в функции strcmp(). Попытка прочесть данные по адресу NULL в модуле C:\WINDOWS\System32\msvcrt.dll. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+#1: TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400], Instance: 0x005082FC (32-bit), Flags: Cmdre0, Thread: 0x4F58 (Main), GetLastError(): 183 (Невозможно создать файл, так как он уже существует). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x75DB9712 in C:\WINDOWS\System32\msvcrt.dll: strcmp()
+
+# 1 0x0042F1DD in C:\Users\Мария\Desktop\assembler\prog.exe: GetArg() at C:/Users/Мария/Desktop/assembler/commands_def.cpp (91):
+
+     89:         if (command[i] == ':')
+     90:         {
+=>   91:             return (int) DefLabel(command, table);
+     92:         }
+     93:     }
+
+# 2 0x0042EDD5 in C:\Users\Мария\Desktop\assembler\prog.exe: HandleArgs() at C:/Users/Мария/Desktop/assembler/assembler.cpp (260):
+
+    258:             code[ip_fixed + 1] = code[ip_fixed + 1] | 2;
+    259:             printf(GREEN("code[%d] = %d\n"), ip_fixed + 1, code[ip_fixed + 1]);
+=>  260:             code[*ip + ap + 1] = GetArg(buffer_cut[*bp + ap], table);
+    261:         }
+    262:         CodeDump(code, *ip);
+
+# 3 0x0042E86F in C:\Users\Мария\Desktop\assembler\prog.exe: MakeCode() at C:/Users/Мария/Desktop/assembler/assembler.cpp (130):
+
+    128:         printf(CYAN("buffer_cut[%d] = %s\n"), bp, buffer_cut[bp]);
+    129: 
+=>  130:         HandleArgs(code, &ip, buffer_cut, &bp, &table);
+    131: 
+    132:         //CodeDump(code, ip);
+
+# 4 0x0042C3C0 in C:\Users\Мария\Desktop\assembler\prog.exe: main() at C:/Users/Мария/Desktop/assembler/main.cpp (53):
+
+     51:     CutBuffer(buffer_cut, buffer, code_size, human.size);
+     52: 
+=>   53:     int* code = MakeCode(&human, buffer_cut, buffer, &code_size);
+     54:     //printf("code = %d\n", code);
+     55:     if (code == NULL)
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\users\мария\codeblocks\mingw\include\txlib.h
+Compiled:	Oct 28 2024 14:14:41, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Oct 28 2024 14:14:50
+
+Run file:	C:\Users\Мария\Desktop\assembler\prog.exe
+Directory:	C:\Users\Мария\Desktop\assembler
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib соболезнует...
+
+Программа: C:\Users\Мария\Desktop\assembler\prog.exe,
+
+ВНЕЗАПНО: signal (11, 0x00): SIGSEGV: Доступ по неверному указателю. Ставьте ассерты! 
+
+Нарушение доступа к памяти.
+
+#1: Исключение EXCEPTION_ACCESS_VIOLATION (0xC0000005) при выполнении кода по адресу 0x75DB9712 в функции strcmp(). Попытка прочесть данные по адресу NULL в модуле C:\WINDOWS\System32\msvcrt.dll. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+С помощью функции signal() вы можете сами обработать эту ошибку.
+
+#2: TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400], Instance: 0x005082FC (32-bit), Flags: Cmdre0, Thread: 0x4F58 (Main), GetLastError(): 183 (Невозможно создать файл, так как он уже существует). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x75DB9712 in C:\WINDOWS\System32\msvcrt.dll: strcmp()
+
+# 1 0x0042F1DD in C:\Users\Мария\Desktop\assembler\prog.exe: GetArg() at C:/Users/Мария/Desktop/assembler/commands_def.cpp (91):
+
+     89:         if (command[i] == ':')
+     90:         {
+=>   91:             return (int) DefLabel(command, table);
+     92:         }
+     93:     }
+
+# 2 0x0042EDD5 in C:\Users\Мария\Desktop\assembler\prog.exe: HandleArgs() at C:/Users/Мария/Desktop/assembler/assembler.cpp (260):
+
+    258:             code[ip_fixed + 1] = code[ip_fixed + 1] | 2;
+    259:             printf(GREEN("code[%d] = %d\n"), ip_fixed + 1, code[ip_fixed + 1]);
+=>  260:             code[*ip + ap + 1] = GetArg(buffer_cut[*bp + ap], table);
+    261:         }
+    262:         CodeDump(code, *ip);
+
+# 3 0x0042E86F in C:\Users\Мария\Desktop\assembler\prog.exe: MakeCode() at C:/Users/Мария/Desktop/assembler/assembler.cpp (130):
+
+    128:         printf(CYAN("buffer_cut[%d] = %s\n"), bp, buffer_cut[bp]);
+    129: 
+=>  130:         HandleArgs(code, &ip, buffer_cut, &bp, &table);
+    131: 
+    132:         //CodeDump(code, ip);
+
+# 4 0x0042C3C0 in C:\Users\Мария\Desktop\assembler\prog.exe: main() at C:/Users/Мария/Desktop/assembler/main.cpp (53):
+
+     51:     CutBuffer(buffer_cut, buffer, code_size, human.size);
+     52: 
+=>   53:     int* code = MakeCode(&human, buffer_cut, buffer, &code_size);
+     54:     //printf("code = %d\n", code);
+     55:     if (code == NULL)
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\users\мария\codeblocks\mingw\include\txlib.h
+Compiled:	Oct 28 2024 14:14:41, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Oct 28 2024 14:14:49
+
+Run file:	C:\Users\Мария\Desktop\assembler\prog.exe
+Directory:	C:\Users\Мария\Desktop\assembler
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib предупреждает:
+
+Программа: C:\Users\Мария\Desktop\assembler\prog.exe,
+
+ВНЕЗАПНО: Нарушение доступа к памяти.
+
+#1: Исключение EXCEPTION_ACCESS_VIOLATION (0xC0000005) при выполнении кода по адресу 0x75DB96B0 в функции strcmp(). Попытка прочесть данные по адресу NULL в модуле C:\WINDOWS\System32\msvcrt.dll. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+#1: TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400], Instance: 0x005082FC (32-bit), Flags: Cmdre0, Thread: 0x452C (Main), GetLastError(): 183 (Невозможно создать файл, так как он уже существует). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x75DB96B0 in C:\WINDOWS\System32\msvcrt.dll: strcmp()
+
+# 1 0x0042EA8D in C:\Users\Мария\Desktop\assembler\prog.exe: HandleArgs() at C:/Users/Мария/Desktop/assembler/assembler.cpp (207):
+
+    205:     }
+    206: 
+=>  207:     while (CommandDefine(buffer_cut[++(*bp)], table, *ip) == STX_ERR && !CheckNewLabel(buffer_cut[*bp], table)) args_quantity++;
+    208:     *bp = bp_fixed;
+    209:     printf(RED("buffer_cut[%d] = %s\n"), *bp, buffer_cut[*bp]);
+
+# 2 0x0042E86F in C:\Users\Мария\Desktop\assembler\prog.exe: MakeCode() at C:/Users/Мария/Desktop/assembler/assembler.cpp (130):
+
+    128:         printf(CYAN("buffer_cut[%d] = %s\n"), bp, buffer_cut[bp]);
+    129: 
+=>  130:         HandleArgs(code, &ip, buffer_cut, &bp, &table);
+    131: 
+    132:         //CodeDump(code, ip);
+
+# 3 0x0042C3C0 in C:\Users\Мария\Desktop\assembler\prog.exe: main() at C:/Users/Мария/Desktop/assembler/main.cpp (53):
+
+     51:     CutBuffer(buffer_cut, buffer, code_size, human.size);
+     52: 
+=>   53:     int* code = MakeCode(&human, buffer_cut, buffer, &code_size);
+     54:     //printf("code = %d\n", code);
+     55:     if (code == NULL)
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\users\мария\codeblocks\mingw\include\txlib.h
+Compiled:	Oct 28 2024 14:15:52, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Oct 28 2024 14:16:05
+
+Run file:	C:\Users\Мария\Desktop\assembler\prog.exe
+Directory:	C:\Users\Мария\Desktop\assembler
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib соболезнует...
+
+Программа: C:\Users\Мария\Desktop\assembler\prog.exe,
+
+ВНЕЗАПНО: signal (11, 0x00): SIGSEGV: Доступ по неверному указателю. Ставьте ассерты! 
+
+Нарушение доступа к памяти.
+
+#1: Исключение EXCEPTION_ACCESS_VIOLATION (0xC0000005) при выполнении кода по адресу 0x75DB96B0 в функции strcmp(). Попытка прочесть данные по адресу NULL в модуле C:\WINDOWS\System32\msvcrt.dll. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+С помощью функции signal() вы можете сами обработать эту ошибку.
+
+#2: TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400], Instance: 0x005082FC (32-bit), Flags: Cmdre0, Thread: 0x452C (Main), GetLastError(): 183 (Невозможно создать файл, так как он уже существует). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x75DB96B0 in C:\WINDOWS\System32\msvcrt.dll: strcmp()
+
+# 1 0x0042EA8D in C:\Users\Мария\Desktop\assembler\prog.exe: HandleArgs() at C:/Users/Мария/Desktop/assembler/assembler.cpp (207):
+
+    205:     }
+    206: 
+=>  207:     while (CommandDefine(buffer_cut[++(*bp)], table, *ip) == STX_ERR && !CheckNewLabel(buffer_cut[*bp], table)) args_quantity++;
+    208:     *bp = bp_fixed;
+    209:     printf(RED("buffer_cut[%d] = %s\n"), *bp, buffer_cut[*bp]);
+
+# 2 0x0042E86F in C:\Users\Мария\Desktop\assembler\prog.exe: MakeCode() at C:/Users/Мария/Desktop/assembler/assembler.cpp (130):
+
+    128:         printf(CYAN("buffer_cut[%d] = %s\n"), bp, buffer_cut[bp]);
+    129: 
+=>  130:         HandleArgs(code, &ip, buffer_cut, &bp, &table);
+    131: 
+    132:         //CodeDump(code, ip);
+
+# 3 0x0042C3C0 in C:\Users\Мария\Desktop\assembler\prog.exe: main() at C:/Users/Мария/Desktop/assembler/main.cpp (53):
+
+     51:     CutBuffer(buffer_cut, buffer, code_size, human.size);
+     52: 
+=>   53:     int* code = MakeCode(&human, buffer_cut, buffer, &code_size);
+     54:     //printf("code = %d\n", code);
+     55:     if (code == NULL)
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\users\мария\codeblocks\mingw\include\txlib.h
+Compiled:	Oct 28 2024 14:15:52, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Oct 28 2024 14:16:04
+
+Run file:	C:\Users\Мария\Desktop\assembler\prog.exe
+Directory:	C:\Users\Мария\Desktop\assembler
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib предупреждает:
+
+Программа: C:\Users\Мария\Desktop\assembler\prog.exe,
+
+ВНЕЗАПНО: Нарушение доступа к памяти.
+
+#1: Исключение EXCEPTION_ACCESS_VIOLATION (0xC0000005) при выполнении кода по адресу 0x75DB96B0 в функции strcmp(). Попытка прочесть данные по адресу NULL в модуле C:\WINDOWS\System32\msvcrt.dll. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+#1: TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400], Instance: 0x005082FC (32-bit), Flags: Cmdre0, Thread: 0x2188 (Main), GetLastError(): 183 (Невозможно создать файл, так как он уже существует). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x75DB96B0 in C:\WINDOWS\System32\msvcrt.dll: strcmp()
+
+# 1 0x0042EA8D in C:\Users\Мария\Desktop\assembler\prog.exe: HandleArgs() at C:/Users/Мария/Desktop/assembler/assembler.cpp (207):
+
+    205:     }
+    206: 
+=>  207:     while (CommandDefine(buffer_cut[++(*bp)], table, *ip) == STX_ERR && !CheckNewLabel(buffer_cut[*bp], table)) args_quantity++;
+    208:     *bp = bp_fixed;
+    209:     printf(RED("buffer_cut[%d] = %s\n"), *bp, buffer_cut[*bp]);
+
+# 2 0x0042E86F in C:\Users\Мария\Desktop\assembler\prog.exe: MakeCode() at C:/Users/Мария/Desktop/assembler/assembler.cpp (130):
+
+    128:         printf(CYAN("buffer_cut[%d] = %s\n"), bp, buffer_cut[bp]);
+    129: 
+=>  130:         HandleArgs(code, &ip, buffer_cut, &bp, &table);
+    131: 
+    132:         //CodeDump(code, ip);
+
+# 3 0x0042C3C0 in C:\Users\Мария\Desktop\assembler\prog.exe: main() at C:/Users/Мария/Desktop/assembler/main.cpp (53):
+
+     51:     CutBuffer(buffer_cut, buffer, code_size, human.size);
+     52: 
+=>   53:     int* code = MakeCode(&human, buffer_cut, buffer, &code_size);
+     54:     //printf("code = %d\n", code);
+     55:     if (code == NULL)
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\users\мария\codeblocks\mingw\include\txlib.h
+Compiled:	Oct 28 2024 14:15:52, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Oct 28 2024 14:17:11
+
+Run file:	C:\Users\Мария\Desktop\assembler\prog.exe
+Directory:	C:\Users\Мария\Desktop\assembler
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib соболезнует...
+
+Программа: C:\Users\Мария\Desktop\assembler\prog.exe,
+
+ВНЕЗАПНО: signal (11, 0x00): SIGSEGV: Доступ по неверному указателю. Ставьте ассерты! 
+
+Нарушение доступа к памяти.
+
+#1: Исключение EXCEPTION_ACCESS_VIOLATION (0xC0000005) при выполнении кода по адресу 0x75DB96B0 в функции strcmp(). Попытка прочесть данные по адресу NULL в модуле C:\WINDOWS\System32\msvcrt.dll. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+С помощью функции signal() вы можете сами обработать эту ошибку.
+
+#2: TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400], Instance: 0x005082FC (32-bit), Flags: Cmdre0, Thread: 0x2188 (Main), GetLastError(): 183 (Невозможно создать файл, так как он уже существует). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x75DB96B0 in C:\WINDOWS\System32\msvcrt.dll: strcmp()
+
+# 1 0x0042EA8D in C:\Users\Мария\Desktop\assembler\prog.exe: HandleArgs() at C:/Users/Мария/Desktop/assembler/assembler.cpp (207):
+
+    205:     }
+    206: 
+=>  207:     while (CommandDefine(buffer_cut[++(*bp)], table, *ip) == STX_ERR && !CheckNewLabel(buffer_cut[*bp], table)) args_quantity++;
+    208:     *bp = bp_fixed;
+    209:     printf(RED("buffer_cut[%d] = %s\n"), *bp, buffer_cut[*bp]);
+
+# 2 0x0042E86F in C:\Users\Мария\Desktop\assembler\prog.exe: MakeCode() at C:/Users/Мария/Desktop/assembler/assembler.cpp (130):
+
+    128:         printf(CYAN("buffer_cut[%d] = %s\n"), bp, buffer_cut[bp]);
+    129: 
+=>  130:         HandleArgs(code, &ip, buffer_cut, &bp, &table);
+    131: 
+    132:         //CodeDump(code, ip);
+
+# 3 0x0042C3C0 in C:\Users\Мария\Desktop\assembler\prog.exe: main() at C:/Users/Мария/Desktop/assembler/main.cpp (53):
+
+     51:     CutBuffer(buffer_cut, buffer, code_size, human.size);
+     52: 
+=>   53:     int* code = MakeCode(&human, buffer_cut, buffer, &code_size);
+     54:     //printf("code = %d\n", code);
+     55:     if (code == NULL)
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\users\мария\codeblocks\mingw\include\txlib.h
+Compiled:	Oct 28 2024 14:15:52, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Oct 28 2024 14:17:11
+
+Run file:	C:\Users\Мария\Desktop\assembler\prog.exe
+Directory:	C:\Users\Мария\Desktop\assembler
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib предупреждает:
+
+Программа: C:\Users\Мария\Desktop\assembler\prog.exe,
+
+ВНЕЗАПНО: Нарушение доступа к памяти.
+
+#1: Исключение EXCEPTION_ACCESS_VIOLATION (0xC0000005) при выполнении кода по адресу 0x75DB96B0 в функции strcmp(). Попытка прочесть данные по адресу NULL в модуле C:\WINDOWS\System32\msvcrt.dll. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+#1: TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400], Instance: 0x005082FC (32-bit), Flags: Cmdre0, Thread: 0x55D8 (Main), GetLastError(): 183 (Невозможно создать файл, так как он уже существует). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x75DB96B0 in C:\WINDOWS\System32\msvcrt.dll: strcmp()
+
+# 1 0x0042EA8D in C:\Users\Мария\Desktop\assembler\prog.exe: HandleArgs() at C:/Users/Мария/Desktop/assembler/assembler.cpp (207):
+
+    205:     }
+    206: 
+=>  207:     while (CommandDefine(buffer_cut[++(*bp)], table, *ip) == STX_ERR && !CheckNewLabel(buffer_cut[*bp], table)) args_quantity++;
+    208:     *bp = bp_fixed;
+    209:     printf(RED("buffer_cut[%d] = %s\n"), *bp, buffer_cut[*bp]);
+
+# 2 0x0042E86F in C:\Users\Мария\Desktop\assembler\prog.exe: MakeCode() at C:/Users/Мария/Desktop/assembler/assembler.cpp (130):
+
+    128:         printf(CYAN("buffer_cut[%d] = %s\n"), bp, buffer_cut[bp]);
+    129: 
+=>  130:         HandleArgs(code, &ip, buffer_cut, &bp, &table);
+    131: 
+    132:         //CodeDump(code, ip);
+
+# 3 0x0042C3C0 in C:\Users\Мария\Desktop\assembler\prog.exe: main() at C:/Users/Мария/Desktop/assembler/main.cpp (53):
+
+     51:     CutBuffer(buffer_cut, buffer, code_size, human.size);
+     52: 
+=>   53:     int* code = MakeCode(&human, buffer_cut, buffer, &code_size);
+     54:     //printf("code = %d\n", code);
+     55:     if (code == NULL)
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\users\мария\codeblocks\mingw\include\txlib.h
+Compiled:	Oct 28 2024 14:20:55, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Oct 28 2024 14:21:11
+
+Run file:	C:\Users\Мария\Desktop\assembler\prog.exe
+Directory:	C:\Users\Мария\Desktop\assembler
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib соболезнует...
+
+Программа: C:\Users\Мария\Desktop\assembler\prog.exe,
+
+ВНЕЗАПНО: signal (11, 0x00): SIGSEGV: Доступ по неверному указателю. Ставьте ассерты! 
+
+Нарушение доступа к памяти.
+
+#1: Исключение EXCEPTION_ACCESS_VIOLATION (0xC0000005) при выполнении кода по адресу 0x75DB96B0 в функции strcmp(). Попытка прочесть данные по адресу NULL в модуле C:\WINDOWS\System32\msvcrt.dll. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+С помощью функции signal() вы можете сами обработать эту ошибку.
+
+#2: TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400], Instance: 0x005082FC (32-bit), Flags: Cmdre0, Thread: 0x55D8 (Main), GetLastError(): 183 (Невозможно создать файл, так как он уже существует). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x75DB96B0 in C:\WINDOWS\System32\msvcrt.dll: strcmp()
+
+# 1 0x0042EA8D in C:\Users\Мария\Desktop\assembler\prog.exe: HandleArgs() at C:/Users/Мария/Desktop/assembler/assembler.cpp (207):
+
+    205:     }
+    206: 
+=>  207:     while (CommandDefine(buffer_cut[++(*bp)], table, *ip) == STX_ERR && !CheckNewLabel(buffer_cut[*bp], table)) args_quantity++;
+    208:     *bp = bp_fixed;
+    209:     printf(RED("buffer_cut[%d] = %s\n"), *bp, buffer_cut[*bp]);
+
+# 2 0x0042E86F in C:\Users\Мария\Desktop\assembler\prog.exe: MakeCode() at C:/Users/Мария/Desktop/assembler/assembler.cpp (130):
+
+    128:         printf(CYAN("buffer_cut[%d] = %s\n"), bp, buffer_cut[bp]);
+    129: 
+=>  130:         HandleArgs(code, &ip, buffer_cut, &bp, &table);
+    131: 
+    132:         //CodeDump(code, ip);
+
+# 3 0x0042C3C0 in C:\Users\Мария\Desktop\assembler\prog.exe: main() at C:/Users/Мария/Desktop/assembler/main.cpp (53):
+
+     51:     CutBuffer(buffer_cut, buffer, code_size, human.size);
+     52: 
+=>   53:     int* code = MakeCode(&human, buffer_cut, buffer, &code_size);
+     54:     //printf("code = %d\n", code);
+     55:     if (code == NULL)
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\users\мария\codeblocks\mingw\include\txlib.h
+Compiled:	Oct 28 2024 14:20:55, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Oct 28 2024 14:21:10
+
+Run file:	C:\Users\Мария\Desktop\assembler\prog.exe
+Directory:	C:\Users\Мария\Desktop\assembler
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib предупреждает:
+
+Программа: C:\Users\Мария\Desktop\assembler\prog.exe,
+
+ВНЕЗАПНО: Нарушение доступа к памяти.
+
+#1: Исключение EXCEPTION_ACCESS_VIOLATION (0xC0000005) при выполнении кода по адресу 0x75DB96F4 в функции strcmp(). Попытка прочесть данные по адресу 0x74E3BF03 в модуле C:\WINDOWS\System32\msvcrt.dll. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+#1: TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400], Instance: 0x005082FC (32-bit), Flags: Cmdre0, Thread: 0x5820 (Main), GetLastError(): 183 (Невозможно создать файл, так как он уже существует). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x75DB96F4 in C:\WINDOWS\System32\msvcrt.dll: strcmp()
+
+# 1 0x0042EA21 in C:\Users\Мария\Desktop\assembler\prog.exe: HandleArgs() at C:/Users/Мария/Desktop/assembler/assembler.cpp (204):
+
+    202:     }
+    203: 
+=>  204:     while (CommandDefine(buffer_cut[++(*bp)], table, *ip) == STX_ERR && !CheckNewLabel(buffer_cut[*bp], table)) args_quantity++;
+    205:     *bp = bp_fixed;
+    206:     if (CommandDefine(buffer_cut[*bp], table, *ip) == JMP && CheckNewLabel(buffer_cut[*bp + 1], table))
+
+# 2 0x0042E86F in C:\Users\Мария\Desktop\assembler\prog.exe: MakeCode() at C:/Users/Мария/Desktop/assembler/assembler.cpp (130):
+
+    128:         printf(CYAN("buffer_cut[%d] = %s\n"), bp, buffer_cut[bp]);
+    129: 
+=>  130:         HandleArgs(code, &ip, buffer_cut, &bp, &table);
+    131: 
+    132:         //CodeDump(code, ip);
+
+# 3 0x0042C3C0 in C:\Users\Мария\Desktop\assembler\prog.exe: main() at C:/Users/Мария/Desktop/assembler/main.cpp (53):
+
+     51:     CutBuffer(buffer_cut, buffer, code_size, human.size);
+     52: 
+=>   53:     int* code = MakeCode(&human, buffer_cut, buffer, &code_size);
+     54:     //printf("code = %d\n", code);
+     55:     if (code == NULL)
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\users\мария\codeblocks\mingw\include\txlib.h
+Compiled:	Oct 30 2024 16:11:07, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Oct 30 2024 16:11:53
+
+Run file:	C:\Users\Мария\Desktop\assembler\prog.exe
+Directory:	C:\Users\Мария\Desktop\assembler
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib соболезнует...
+
+Программа: C:\Users\Мария\Desktop\assembler\prog.exe,
+
+ВНЕЗАПНО: signal (11, 0x00): SIGSEGV: Доступ по неверному указателю. Ставьте ассерты! 
+
+Нарушение доступа к памяти.
+
+#1: Исключение EXCEPTION_ACCESS_VIOLATION (0xC0000005) при выполнении кода по адресу 0x75DB96F4 в функции strcmp(). Попытка прочесть данные по адресу 0x74E3BF03 в модуле C:\WINDOWS\System32\msvcrt.dll. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+С помощью функции signal() вы можете сами обработать эту ошибку.
+
+#2: TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400], Instance: 0x005082FC (32-bit), Flags: Cmdre0, Thread: 0x5820 (Main), GetLastError(): 183 (Невозможно создать файл, так как он уже существует). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x75DB96F4 in C:\WINDOWS\System32\msvcrt.dll: strcmp()
+
+# 1 0x0042EA21 in C:\Users\Мария\Desktop\assembler\prog.exe: HandleArgs() at C:/Users/Мария/Desktop/assembler/assembler.cpp (204):
+
+    202:     }
+    203: 
+=>  204:     while (CommandDefine(buffer_cut[++(*bp)], table, *ip) == STX_ERR && !CheckNewLabel(buffer_cut[*bp], table)) args_quantity++;
+    205:     *bp = bp_fixed;
+    206:     if (CommandDefine(buffer_cut[*bp], table, *ip) == JMP && CheckNewLabel(buffer_cut[*bp + 1], table))
+
+# 2 0x0042E86F in C:\Users\Мария\Desktop\assembler\prog.exe: MakeCode() at C:/Users/Мария/Desktop/assembler/assembler.cpp (130):
+
+    128:         printf(CYAN("buffer_cut[%d] = %s\n"), bp, buffer_cut[bp]);
+    129: 
+=>  130:         HandleArgs(code, &ip, buffer_cut, &bp, &table);
+    131: 
+    132:         //CodeDump(code, ip);
+
+# 3 0x0042C3C0 in C:\Users\Мария\Desktop\assembler\prog.exe: main() at C:/Users/Мария/Desktop/assembler/main.cpp (53):
+
+     51:     CutBuffer(buffer_cut, buffer, code_size, human.size);
+     52: 
+=>   53:     int* code = MakeCode(&human, buffer_cut, buffer, &code_size);
+     54:     //printf("code = %d\n", code);
+     55:     if (code == NULL)
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\users\мария\codeblocks\mingw\include\txlib.h
+Compiled:	Oct 30 2024 16:11:07, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Oct 30 2024 16:11:53
+
+Run file:	C:\Users\Мария\Desktop\assembler\prog.exe
+Directory:	C:\Users\Мария\Desktop\assembler
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib предупреждает:
+
+Программа: C:\Users\Мария\Desktop\assembler\prog.exe,
+
+ВНЕЗАПНО: Нарушение доступа к памяти.
+
+#1: Исключение EXCEPTION_ACCESS_VIOLATION (0xC0000005) при выполнении кода по адресу 0x75DB970C в функции strcmp(). Попытка прочесть данные по адресу 0x7102EF12 в модуле C:\WINDOWS\System32\msvcrt.dll. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+#1: TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400], Instance: 0x005082FC (32-bit), Flags: Cmdre0, Thread: 0x2C6C (Main), GetLastError(): 183 (Невозможно создать файл, так как он уже существует). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x75DB970C in C:\WINDOWS\System32\msvcrt.dll: strcmp()
+
+# 1 0x0042EA21 in C:\Users\Мария\Desktop\assembler\prog.exe: HandleArgs() at C:/Users/Мария/Desktop/assembler/assembler.cpp (204):
+
+    202:     }
+    203: 
+=>  204:     while (CommandDefine(buffer_cut[++(*bp)], table, *ip) == STX_ERR && !CheckNewLabel(buffer_cut[*bp], table)) args_quantity++;
+    205:     *bp = bp_fixed;
+    206:     if (CommandDefine(buffer_cut[*bp], table, *ip) == JMP && CheckNewLabel(buffer_cut[*bp + 1], table))
+
+# 2 0x0042E86F in C:\Users\Мария\Desktop\assembler\prog.exe: MakeCode() at C:/Users/Мария/Desktop/assembler/assembler.cpp (130):
+
+    128:         printf(CYAN("buffer_cut[%d] = %s\n"), bp, buffer_cut[bp]);
+    129: 
+=>  130:         HandleArgs(code, &ip, buffer_cut, &bp, &table);
+    131: 
+    132:         //CodeDump(code, ip);
+
+# 3 0x0042C3C0 in C:\Users\Мария\Desktop\assembler\prog.exe: main() at C:/Users/Мария/Desktop/assembler/main.cpp (53):
+
+     51:     CutBuffer(buffer_cut, buffer, code_size, human.size);
+     52: 
+=>   53:     int* code = MakeCode(&human, buffer_cut, buffer, &code_size);
+     54:     //printf("code = %d\n", code);
+     55:     if (code == NULL)
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\users\мария\codeblocks\mingw\include\txlib.h
+Compiled:	Oct 30 2024 16:11:07, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Oct 30 2024 16:12:38
+
+Run file:	C:\Users\Мария\Desktop\assembler\prog.exe
+Directory:	C:\Users\Мария\Desktop\assembler
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib соболезнует...
+
+Программа: C:\Users\Мария\Desktop\assembler\prog.exe,
+
+ВНЕЗАПНО: signal (11, 0x00): SIGSEGV: Доступ по неверному указателю. Ставьте ассерты! 
+
+Нарушение доступа к памяти.
+
+#1: Исключение EXCEPTION_ACCESS_VIOLATION (0xC0000005) при выполнении кода по адресу 0x75DB970C в функции strcmp(). Попытка прочесть данные по адресу 0x7102EF12 в модуле C:\WINDOWS\System32\msvcrt.dll. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+С помощью функции signal() вы можете сами обработать эту ошибку.
+
+#2: TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400], Instance: 0x005082FC (32-bit), Flags: Cmdre0, Thread: 0x2C6C (Main), GetLastError(): 183 (Невозможно создать файл, так как он уже существует). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x75DB970C in C:\WINDOWS\System32\msvcrt.dll: strcmp()
+
+# 1 0x0042EA21 in C:\Users\Мария\Desktop\assembler\prog.exe: HandleArgs() at C:/Users/Мария/Desktop/assembler/assembler.cpp (204):
+
+    202:     }
+    203: 
+=>  204:     while (CommandDefine(buffer_cut[++(*bp)], table, *ip) == STX_ERR && !CheckNewLabel(buffer_cut[*bp], table)) args_quantity++;
+    205:     *bp = bp_fixed;
+    206:     if (CommandDefine(buffer_cut[*bp], table, *ip) == JMP && CheckNewLabel(buffer_cut[*bp + 1], table))
+
+# 2 0x0042E86F in C:\Users\Мария\Desktop\assembler\prog.exe: MakeCode() at C:/Users/Мария/Desktop/assembler/assembler.cpp (130):
+
+    128:         printf(CYAN("buffer_cut[%d] = %s\n"), bp, buffer_cut[bp]);
+    129: 
+=>  130:         HandleArgs(code, &ip, buffer_cut, &bp, &table);
+    131: 
+    132:         //CodeDump(code, ip);
+
+# 3 0x0042C3C0 in C:\Users\Мария\Desktop\assembler\prog.exe: main() at C:/Users/Мария/Desktop/assembler/main.cpp (53):
+
+     51:     CutBuffer(buffer_cut, buffer, code_size, human.size);
+     52: 
+=>   53:     int* code = MakeCode(&human, buffer_cut, buffer, &code_size);
+     54:     //printf("code = %d\n", code);
+     55:     if (code == NULL)
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\users\мария\codeblocks\mingw\include\txlib.h
+Compiled:	Oct 30 2024 16:11:07, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Oct 30 2024 16:12:39
+
+Run file:	C:\Users\Мария\Desktop\assembler\prog.exe
+Directory:	C:\Users\Мария\Desktop\assembler
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib предупреждает:
+
+Программа: C:\Users\Мария\Desktop\assembler\prog.exe,
+
+ВНЕЗАПНО: Нарушение доступа к памяти.
+
+#1: Исключение EXCEPTION_ACCESS_VIOLATION (0xC0000005) при выполнении кода по адресу 0x75DB970C в функции strcmp(). Попытка прочесть данные по адресу 0x38CE3AE2 в модуле C:\WINDOWS\System32\msvcrt.dll. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+#1: TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400], Instance: 0x005082FC (32-bit), Flags: Cmdre0, Thread: 0x3C1C (Main), GetLastError(): 183 (Невозможно создать файл, так как он уже существует). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x75DB970C in C:\WINDOWS\System32\msvcrt.dll: strcmp()
+
+# 1 0x0042EA25 in C:\Users\Мария\Desktop\assembler\prog.exe: HandleArgs() at C:/Users/Мария/Desktop/assembler/assembler.cpp (204):
+
+    202:     }
+    203: 
+=>  204:     while (CommandDefine(buffer_cut[++(*bp)], table, *ip) == STX_ERR && !CheckNewLabel(buffer_cut[*bp], table)) args_quantity++;
+    205:     *bp = bp_fixed;
+    206:     if (CommandDefine(buffer_cut[*bp], table, *ip) == JMP && CheckNewLabel(buffer_cut[*bp + 1], table))
+
+# 2 0x0042E873 in C:\Users\Мария\Desktop\assembler\prog.exe: MakeCode() at C:/Users/Мария/Desktop/assembler/assembler.cpp (130):
+
+    128:         printf(CYAN("buffer_cut[%d] = %s\n"), bp, buffer_cut[bp]);
+    129: 
+=>  130:         HandleArgs(code, &ip, buffer_cut, &bp, &table);
+    131: 
+    132:         //CodeDump(code, ip);
+
+# 3 0x0042C3C0 in C:\Users\Мария\Desktop\assembler\prog.exe: main() at C:/Users/Мария/Desktop/assembler/main.cpp (53):
+
+     51:     CutBuffer(buffer_cut, buffer, code_size, human.size);
+     52: 
+=>   53:     int* code = MakeCode(&human, buffer_cut, buffer, &code_size);
+     54:     //printf("code = %d\n", code);
+     55:     if (code == NULL)
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\users\мария\codeblocks\mingw\include\txlib.h
+Compiled:	Oct 30 2024 16:19:28, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Oct 30 2024 16:19:35
+
+Run file:	C:\Users\Мария\Desktop\assembler\prog.exe
+Directory:	C:\Users\Мария\Desktop\assembler
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib соболезнует...
+
+Программа: C:\Users\Мария\Desktop\assembler\prog.exe,
+
+ВНЕЗАПНО: signal (11, 0x00): SIGSEGV: Доступ по неверному указателю. Ставьте ассерты! 
+
+Нарушение доступа к памяти.
+
+#1: Исключение EXCEPTION_ACCESS_VIOLATION (0xC0000005) при выполнении кода по адресу 0x75DB970C в функции strcmp(). Попытка прочесть данные по адресу 0x38CE3AE2 в модуле C:\WINDOWS\System32\msvcrt.dll. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+С помощью функции signal() вы можете сами обработать эту ошибку.
+
+#2: TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400], Instance: 0x005082FC (32-bit), Flags: Cmdre0, Thread: 0x3C1C (Main), GetLastError(): 183 (Невозможно создать файл, так как он уже существует). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x75DB970C in C:\WINDOWS\System32\msvcrt.dll: strcmp()
+
+# 1 0x0042EA25 in C:\Users\Мария\Desktop\assembler\prog.exe: HandleArgs() at C:/Users/Мария/Desktop/assembler/assembler.cpp (204):
+
+    202:     }
+    203: 
+=>  204:     while (CommandDefine(buffer_cut[++(*bp)], table, *ip) == STX_ERR && !CheckNewLabel(buffer_cut[*bp], table)) args_quantity++;
+    205:     *bp = bp_fixed;
+    206:     if (CommandDefine(buffer_cut[*bp], table, *ip) == JMP && CheckNewLabel(buffer_cut[*bp + 1], table))
+
+# 2 0x0042E873 in C:\Users\Мария\Desktop\assembler\prog.exe: MakeCode() at C:/Users/Мария/Desktop/assembler/assembler.cpp (130):
+
+    128:         printf(CYAN("buffer_cut[%d] = %s\n"), bp, buffer_cut[bp]);
+    129: 
+=>  130:         HandleArgs(code, &ip, buffer_cut, &bp, &table);
+    131: 
+    132:         //CodeDump(code, ip);
+
+# 3 0x0042C3C0 in C:\Users\Мария\Desktop\assembler\prog.exe: main() at C:/Users/Мария/Desktop/assembler/main.cpp (53):
+
+     51:     CutBuffer(buffer_cut, buffer, code_size, human.size);
+     52: 
+=>   53:     int* code = MakeCode(&human, buffer_cut, buffer, &code_size);
+     54:     //printf("code = %d\n", code);
+     55:     if (code == NULL)
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\users\мария\codeblocks\mingw\include\txlib.h
+Compiled:	Oct 30 2024 16:19:28, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Oct 30 2024 16:19:35
+
+Run file:	C:\Users\Мария\Desktop\assembler\prog.exe
+Directory:	C:\Users\Мария\Desktop\assembler
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib предупреждает:
+
+Программа: C:\Users\Мария\Desktop\assembler\prog.exe,
+
+ВНЕЗАПНО: Нарушение доступа к памяти.
+
+#1: Исключение EXCEPTION_ACCESS_VIOLATION (0xC0000005) при выполнении кода по адресу 0x761C96B0 в функции strcmp(). Попытка прочесть данные по адресу NULL в модуле C:\WINDOWS\System32\msvcrt.dll. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+#1: TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400], Instance: 0x005082FC (32-bit), Flags: Cmdre0, Thread: 0x2D78 (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x761C96B0 in C:\WINDOWS\System32\msvcrt.dll: strcmp()
+
+# 1 0x0042EA55 in C:\Users\Мария\Desktop\assembler\prog.exe: HandleArgs() at C:/Users/Мария/Desktop/assembler/assembler.cpp (204):
+
+    202:     }
+    203: 
+=>  204:     while (CommandDefine(buffer_cut[++(*bp)], table, *ip) == STX_ERR && !CheckNewLabel(buffer_cut[*bp], table)) args_quantity++;
+    205:     *bp = bp_fixed;
+    206:     if (CommandDefine(buffer_cut[*bp], table, *ip) == JMP && CheckNewLabel(buffer_cut[*bp + 1], table))
+
+# 2 0x0042E8A3 in C:\Users\Мария\Desktop\assembler\prog.exe: MakeCode() at C:/Users/Мария/Desktop/assembler/assembler.cpp (130):
+
+    128:         printf(CYAN("buffer_cut[%d] = %s\n"), bp, buffer_cut[bp]);
+    129: 
+=>  130:         HandleArgs(code, &ip, buffer_cut, &bp, &table);
+    131: 
+    132:         //CodeDump(code, ip);
+
+# 3 0x0042C3C0 in C:\Users\Мария\Desktop\assembler\prog.exe: main() at C:/Users/Мария/Desktop/assembler/main.cpp (53):
+
+     51:     CutBuffer(buffer_cut, buffer, code_size, human.size);
+     52: 
+=>   53:     int* code = MakeCode(&human, buffer_cut, buffer, &code_size);
+     54:     if (code == NULL)
+     55:     {
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\users\мария\codeblocks\mingw\include\txlib.h
+Compiled:	Oct 30 2024 19:11:51, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Nov 01 2024 12:36:10
+
+Run file:	C:\Users\Мария\Desktop\assembler\prog.exe
+Directory:	C:\Users\Мария\Desktop\assembler
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib соболезнует...
+
+Программа: C:\Users\Мария\Desktop\assembler\prog.exe,
+
+ВНЕЗАПНО: signal (11, 0x00): SIGSEGV: Доступ по неверному указателю. Ставьте ассерты! 
+
+Нарушение доступа к памяти.
+
+#1: Исключение EXCEPTION_ACCESS_VIOLATION (0xC0000005) при выполнении кода по адресу 0x761C96B0 в функции strcmp(). Попытка прочесть данные по адресу NULL в модуле C:\WINDOWS\System32\msvcrt.dll. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+С помощью функции signal() вы можете сами обработать эту ошибку.
+
+#2: TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400], Instance: 0x005082FC (32-bit), Flags: Cmdre0, Thread: 0x2D78 (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x761C96B0 in C:\WINDOWS\System32\msvcrt.dll: strcmp()
+
+# 1 0x0042EA55 in C:\Users\Мария\Desktop\assembler\prog.exe: HandleArgs() at C:/Users/Мария/Desktop/assembler/assembler.cpp (204):
+
+    202:     }
+    203: 
+=>  204:     while (CommandDefine(buffer_cut[++(*bp)], table, *ip) == STX_ERR && !CheckNewLabel(buffer_cut[*bp], table)) args_quantity++;
+    205:     *bp = bp_fixed;
+    206:     if (CommandDefine(buffer_cut[*bp], table, *ip) == JMP && CheckNewLabel(buffer_cut[*bp + 1], table))
+
+# 2 0x0042E8A3 in C:\Users\Мария\Desktop\assembler\prog.exe: MakeCode() at C:/Users/Мария/Desktop/assembler/assembler.cpp (130):
+
+    128:         printf(CYAN("buffer_cut[%d] = %s\n"), bp, buffer_cut[bp]);
+    129: 
+=>  130:         HandleArgs(code, &ip, buffer_cut, &bp, &table);
+    131: 
+    132:         //CodeDump(code, ip);
+
+# 3 0x0042C3C0 in C:\Users\Мария\Desktop\assembler\prog.exe: main() at C:/Users/Мария/Desktop/assembler/main.cpp (53):
+
+     51:     CutBuffer(buffer_cut, buffer, code_size, human.size);
+     52: 
+=>   53:     int* code = MakeCode(&human, buffer_cut, buffer, &code_size);
+     54:     if (code == NULL)
+     55:     {
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\users\мария\codeblocks\mingw\include\txlib.h
+Compiled:	Oct 30 2024 19:11:51, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Nov 01 2024 12:36:10
+
+Run file:	C:\Users\Мария\Desktop\assembler\prog.exe
+Directory:	C:\Users\Мария\Desktop\assembler
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib соболезнует...
+
+Программа: C:\Users\Мария\Desktop\assembler\prog.exe,
+
+ВНЕЗАПНО: signal (22, 0x00): SIGABRT: Аварийное завершение программы, вызвана функция abort(). 
+
+С помощью функции signal() вы можете сами обработать эту ошибку.
+
+#1: TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400], Instance: 0x005082FC (32-bit), Flags: Cmdre0, Thread: 0x304C (Main), GetLastError(): 8 (Недостаточно ресурсов памяти для обработки этой команды), errno: 12 (Visual C++ CRT: Not enough memory to complete call to strerror.). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 1 0x761971F1 in C:\WINDOWS\System32\msvcrt.dll: raise()
+# 2 0x7619B69B in C:\WINDOWS\System32\msvcrt.dll: abort()
+# 9 0x77DE809E in C:\WINDOWS\SYSTEM32\ntdll.dll: RtlGetAppContainerNamedObjectPath()
+#10 0x77DE806E in C:\WINDOWS\SYSTEM32\ntdll.dll: RtlGetAppContainerNamedObjectPath()
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in int {anonymous}::TX::_txSetWindowText(HWND, const char*, const char*, int, const wchar_t*) at c:\users\мария\codeblocks\mingw\include\txlib.h:9319:
+
+   9317:         }
+   9318: 
+=> 9319: $   tools::getWindowText (wnd, title, _TX_BUFSIZE-1);
+   9320: $   int len = (int) wcslen (title); if (len >= (int)_TX_BUFSIZE) len = _TX_BUFSIZE-1;
+   9321: $   memcpy (oldTitle, title, sizeof (oldTitle));
+
+# 1 in void {anonymous}::TX::_txCleanup() at c:\users\мария\codeblocks\mingw\include\txlib.h:9075:
+
+   9073:             {
+   9074: $           EnableWindow     (console, true);
+=> 9075: $           _txSetWindowText (console, " [ЗАВЕРШЕНО]", " [FINISHED]", 2, L"\x0417" /* 'З' */ L"\x0046" /* 'F' */);
+   9076:             }
+   9077:         }
+
+# 2 in void {anonymous}::TX::_txOnCExit() at c:\users\мария\codeblocks\mingw\include\txlib.h:8925:
+
+   8923:     OutputDebugString ("\n");
+   8924: 
+=> 8925: $5  _txCleanup();
+   8926: 
+   8927:     _TX_CALLv (Win32::_cexit, ());
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\users\мария\codeblocks\mingw\include\txlib.h
+Compiled:	Nov  1 2024 12:50:48, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Nov 01 2024 12:50:54
+
+Run file:	C:\Users\Мария\Desktop\assembler\prog.exe
+Directory:	C:\Users\Мария\Desktop\assembler
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib соболезнует...
+
+Программа: C:\Users\Мария\Desktop\assembler\prog.exe,
+
+ВНЕЗАПНО: signal (22, 0x00): SIGABRT: Аварийное завершение программы, вызвана функция abort(). 
+
+С помощью функции signal() вы можете сами обработать эту ошибку.
+
+#1: TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400], Instance: 0x005082FC (32-bit), Flags: Cmdre0, Thread: 0x1004 (Main), GetLastError(): 8 (Недостаточно ресурсов памяти для обработки этой команды), errno: 12 (Visual C++ CRT: Not enough memory to complete call to strerror.). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 1 0x761971F1 in C:\WINDOWS\System32\msvcrt.dll: raise()
+# 2 0x7619B69B in C:\WINDOWS\System32\msvcrt.dll: abort()
+# 9 0x77DE809E in C:\WINDOWS\SYSTEM32\ntdll.dll: RtlGetAppContainerNamedObjectPath()
+#10 0x77DE806E in C:\WINDOWS\SYSTEM32\ntdll.dll: RtlGetAppContainerNamedObjectPath()
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in int {anonymous}::TX::_txSetWindowText(HWND, const char*, const char*, int, const wchar_t*) at c:\users\мария\codeblocks\mingw\include\txlib.h:9319:
+
+   9317:         }
+   9318: 
+=> 9319: $   tools::getWindowText (wnd, title, _TX_BUFSIZE-1);
+   9320: $   int len = (int) wcslen (title); if (len >= (int)_TX_BUFSIZE) len = _TX_BUFSIZE-1;
+   9321: $   memcpy (oldTitle, title, sizeof (oldTitle));
+
+# 1 in void {anonymous}::TX::_txCleanup() at c:\users\мария\codeblocks\mingw\include\txlib.h:9075:
+
+   9073:             {
+   9074: $           EnableWindow     (console, true);
+=> 9075: $           _txSetWindowText (console, " [ЗАВЕРШЕНО]", " [FINISHED]", 2, L"\x0417" /* 'З' */ L"\x0046" /* 'F' */);
+   9076:             }
+   9077:         }
+
+# 2 in void {anonymous}::TX::_txOnCExit() at c:\users\мария\codeblocks\mingw\include\txlib.h:8925:
+
+   8923:     OutputDebugString ("\n");
+   8924: 
+=> 8925: $5  _txCleanup();
+   8926: 
+   8927:     _TX_CALLv (Win32::_cexit, ());
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\users\мария\codeblocks\mingw\include\txlib.h
+Compiled:	Nov  1 2024 12:57:24, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Nov 01 2024 12:57:30
+
+Run file:	C:\Users\Мария\Desktop\assembler\prog.exe
+Directory:	C:\Users\Мария\Desktop\assembler
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib соболезнует...
+
+Программа: C:\Users\Мария\Desktop\assembler\prog.exe,
+
+ВНЕЗАПНО: signal (22, 0x00): SIGABRT: Аварийное завершение программы, вызвана функция abort(). 
+
+С помощью функции signal() вы можете сами обработать эту ошибку.
+
+#1: TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400], Instance: 0x005082FC (32-bit), Flags: Cmdre0, Thread: 0x497C (Main), GetLastError(): 8 (Недостаточно ресурсов памяти для обработки этой команды), errno: 12 (Visual C++ CRT: Not enough memory to complete call to strerror.). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 1 0x761971F1 in C:\WINDOWS\System32\msvcrt.dll: raise()
+# 2 0x7619B69B in C:\WINDOWS\System32\msvcrt.dll: abort()
+# 9 0x77DE809E in C:\WINDOWS\SYSTEM32\ntdll.dll: RtlGetAppContainerNamedObjectPath()
+#10 0x77DE806E in C:\WINDOWS\SYSTEM32\ntdll.dll: RtlGetAppContainerNamedObjectPath()
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in int {anonymous}::TX::_txSetWindowText(HWND, const char*, const char*, int, const wchar_t*) at c:\users\мария\codeblocks\mingw\include\txlib.h:9319:
+
+   9317:         }
+   9318: 
+=> 9319: $   tools::getWindowText (wnd, title, _TX_BUFSIZE-1);
+   9320: $   int len = (int) wcslen (title); if (len >= (int)_TX_BUFSIZE) len = _TX_BUFSIZE-1;
+   9321: $   memcpy (oldTitle, title, sizeof (oldTitle));
+
+# 1 in void {anonymous}::TX::_txCleanup() at c:\users\мария\codeblocks\mingw\include\txlib.h:9075:
+
+   9073:             {
+   9074: $           EnableWindow     (console, true);
+=> 9075: $           _txSetWindowText (console, " [ЗАВЕРШЕНО]", " [FINISHED]", 2, L"\x0417" /* 'З' */ L"\x0046" /* 'F' */);
+   9076:             }
+   9077:         }
+
+# 2 in void {anonymous}::TX::_txOnCExit() at c:\users\мария\codeblocks\mingw\include\txlib.h:8925:
+
+   8923:     OutputDebugString ("\n");
+   8924: 
+=> 8925: $5  _txCleanup();
+   8926: 
+   8927:     _TX_CALLv (Win32::_cexit, ());
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\users\мария\codeblocks\mingw\include\txlib.h
+Compiled:	Nov  1 2024 13:02:15, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Nov 01 2024 13:02:27
+
+Run file:	C:\Users\Мария\Desktop\assembler\prog.exe
+Directory:	C:\Users\Мария\Desktop\assembler
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib соболезнует...
+
+Программа: C:\Users\Мария\Desktop\assembler\prog.exe,
+
+ВНЕЗАПНО: signal (22, 0x00): SIGABRT: Аварийное завершение программы, вызвана функция abort(). 
+
+С помощью функции signal() вы можете сами обработать эту ошибку.
+
+#1: TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400], Instance: 0x005082FC (32-bit), Flags: Cmdre0, Thread: 0x234C (Main), GetLastError(): 8 (Недостаточно ресурсов памяти для обработки этой команды), errno: 12 (Visual C++ CRT: Not enough memory to complete call to strerror.). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 1 0x761971F1 in C:\WINDOWS\System32\msvcrt.dll: raise()
+# 2 0x7619B69B in C:\WINDOWS\System32\msvcrt.dll: abort()
+# 9 0x77DE809E in C:\WINDOWS\SYSTEM32\ntdll.dll: RtlGetAppContainerNamedObjectPath()
+#10 0x77DE806E in C:\WINDOWS\SYSTEM32\ntdll.dll: RtlGetAppContainerNamedObjectPath()
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in int {anonymous}::TX::_txSetWindowText(HWND, const char*, const char*, int, const wchar_t*) at c:\users\мария\codeblocks\mingw\include\txlib.h:9319:
+
+   9317:         }
+   9318: 
+=> 9319: $   tools::getWindowText (wnd, title, _TX_BUFSIZE-1);
+   9320: $   int len = (int) wcslen (title); if (len >= (int)_TX_BUFSIZE) len = _TX_BUFSIZE-1;
+   9321: $   memcpy (oldTitle, title, sizeof (oldTitle));
+
+# 1 in void {anonymous}::TX::_txCleanup() at c:\users\мария\codeblocks\mingw\include\txlib.h:9075:
+
+   9073:             {
+   9074: $           EnableWindow     (console, true);
+=> 9075: $           _txSetWindowText (console, " [ЗАВЕРШЕНО]", " [FINISHED]", 2, L"\x0417" /* 'З' */ L"\x0046" /* 'F' */);
+   9076:             }
+   9077:         }
+
+# 2 in void {anonymous}::TX::_txOnCExit() at c:\users\мария\codeblocks\mingw\include\txlib.h:8925:
+
+   8923:     OutputDebugString ("\n");
+   8924: 
+=> 8925: $5  _txCleanup();
+   8926: 
+   8927:     _TX_CALLv (Win32::_cexit, ());
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\users\мария\codeblocks\mingw\include\txlib.h
+Compiled:	Nov  1 2024 13:03:12, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Nov 01 2024 13:03:19
+
+Run file:	C:\Users\Мария\Desktop\assembler\prog.exe
+Directory:	C:\Users\Мария\Desktop\assembler
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib соболезнует...
+
+Программа: C:\Users\Мария\Desktop\assembler\prog.exe,
+
+ВНЕЗАПНО: signal (22, 0x00): SIGABRT: Аварийное завершение программы, вызвана функция abort(). 
+
+С помощью функции signal() вы можете сами обработать эту ошибку.
+
+#1: TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400], Instance: 0x005082FC (32-bit), Flags: Cmdre0, Thread: 0x5E8 (Main), GetLastError(): 8 (Недостаточно ресурсов памяти для обработки этой команды), errno: 12 (Visual C++ CRT: Not enough memory to complete call to strerror.). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 1 0x761971F1 in C:\WINDOWS\System32\msvcrt.dll: raise()
+# 2 0x7619B69B in C:\WINDOWS\System32\msvcrt.dll: abort()
+# 9 0x77DE809E in C:\WINDOWS\SYSTEM32\ntdll.dll: RtlGetAppContainerNamedObjectPath()
+#10 0x77DE806E in C:\WINDOWS\SYSTEM32\ntdll.dll: RtlGetAppContainerNamedObjectPath()
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in int {anonymous}::TX::_txSetWindowText(HWND, const char*, const char*, int, const wchar_t*) at c:\users\мария\codeblocks\mingw\include\txlib.h:9319:
+
+   9317:         }
+   9318: 
+=> 9319: $   tools::getWindowText (wnd, title, _TX_BUFSIZE-1);
+   9320: $   int len = (int) wcslen (title); if (len >= (int)_TX_BUFSIZE) len = _TX_BUFSIZE-1;
+   9321: $   memcpy (oldTitle, title, sizeof (oldTitle));
+
+# 1 in void {anonymous}::TX::_txCleanup() at c:\users\мария\codeblocks\mingw\include\txlib.h:9075:
+
+   9073:             {
+   9074: $           EnableWindow     (console, true);
+=> 9075: $           _txSetWindowText (console, " [ЗАВЕРШЕНО]", " [FINISHED]", 2, L"\x0417" /* 'З' */ L"\x0046" /* 'F' */);
+   9076:             }
+   9077:         }
+
+# 2 in void {anonymous}::TX::_txOnCExit() at c:\users\мария\codeblocks\mingw\include\txlib.h:8925:
+
+   8923:     OutputDebugString ("\n");
+   8924: 
+=> 8925: $5  _txCleanup();
+   8926: 
+   8927:     _TX_CALLv (Win32::_cexit, ());
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\users\мария\codeblocks\mingw\include\txlib.h
+Compiled:	Nov  1 2024 14:10:45, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Nov 01 2024 14:10:51
+
+Run file:	C:\Users\Мария\Desktop\assembler\prog.exe
+Directory:	C:\Users\Мария\Desktop\assembler
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib предупреждает:
+
+Программа: C:\Users\Мария\Desktop\assembler\prog.exe,
+
+ВНЕЗАПНО: Нарушение доступа к памяти.
+
+#1: Исключение EXCEPTION_ACCESS_VIOLATION (0xC0000005) при выполнении кода по адресу 0x761C96B0 в функции strcmp(). Попытка прочесть данные по адресу NULL в модуле C:\WINDOWS\System32\msvcrt.dll. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+#1: TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400], Instance: 0x005082FC (32-bit), Flags: Cmdre0, Thread: 0x2804 (Main), _doserrno: 2 (No such file or directory). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x761C96B0 in C:\WINDOWS\System32\msvcrt.dll: strcmp()
+
+# 1 0x0042EAB4 in C:\Users\Мария\Desktop\assembler\prog.exe: HandleArgs() at C:/Users/Мария/Desktop/assembler/assembler.cpp (173):
+
+    171:     while (CommandDefine(buffer_cut[++(*bp)]) == STX_ERR && !CheckNewLabel(buffer_cut[*bp], table)) args_quantity++;
+    172:     *bp = bp_fixed;
+=>  173:     if (CommandDefine(buffer_cut[*bp]) == JMP && CheckNewLabel(buffer_cut[*bp + 1], table))
+    174:     {
+    175:         args_quantity = 1;
+
+# 2 0x0042E918 in C:\Users\Мария\Desktop\assembler\prog.exe: MakeCode() at C:/Users/Мария/Desktop/assembler/assembler.cpp (137):
+
+    135:         HandleArgs(code, &ip, buffer_cut, &bp, &table);
+    136:     }
+=>  137:     free(buffer_cut);
+    138:     printf("command line:\n");
+    139:     for (size_t i = 0; i < ip + 1; i++)
+
+# 3 0x0042C3C0 in C:\Users\Мария\Desktop\assembler\prog.exe: main() at C:/Users/Мария/Desktop/assembler/main.cpp (53):
+
+     51:     CutBuffer(buffer_cut, buffer, code_size, human.size);
+     52: 
+=>   53:     int* code = MakeCode(&human, buffer_cut, buffer, &code_size);
+     54:     if (code == NULL)
+     55:     {
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\users\мария\codeblocks\mingw\include\txlib.h
+Compiled:	Nov  1 2024 20:08:41, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Nov 01 2024 20:25:23
+
+Run file:	C:\Users\Мария\Desktop\assembler\prog.exe
+Directory:	C:\Users\Мария\Desktop\assembler
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib соболезнует...
+
+Программа: C:\Users\Мария\Desktop\assembler\prog.exe,
+
+ВНЕЗАПНО: signal (11, 0x00): SIGSEGV: Доступ по неверному указателю. Ставьте ассерты! 
+
+Нарушение доступа к памяти.
+
+#1: Исключение EXCEPTION_ACCESS_VIOLATION (0xC0000005) при выполнении кода по адресу 0x761C96B0 в функции strcmp(). Попытка прочесть данные по адресу NULL в модуле C:\WINDOWS\System32\msvcrt.dll. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+С помощью функции signal() вы можете сами обработать эту ошибку.
+
+#2: TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400], Instance: 0x005082FC (32-bit), Flags: Cmdre0, Thread: 0x2804 (Main), _doserrno: 2 (No such file or directory). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x761C96B0 in C:\WINDOWS\System32\msvcrt.dll: strcmp()
+
+# 1 0x0042EAB4 in C:\Users\Мария\Desktop\assembler\prog.exe: HandleArgs() at C:/Users/Мария/Desktop/assembler/assembler.cpp (173):
+
+    171:     while (CommandDefine(buffer_cut[++(*bp)]) == STX_ERR && !CheckNewLabel(buffer_cut[*bp], table)) args_quantity++;
+    172:     *bp = bp_fixed;
+=>  173:     if (CommandDefine(buffer_cut[*bp]) == JMP && CheckNewLabel(buffer_cut[*bp + 1], table))
+    174:     {
+    175:         args_quantity = 1;
+
+# 2 0x0042E918 in C:\Users\Мария\Desktop\assembler\prog.exe: MakeCode() at C:/Users/Мария/Desktop/assembler/assembler.cpp (137):
+
+    135:         HandleArgs(code, &ip, buffer_cut, &bp, &table);
+    136:     }
+=>  137:     free(buffer_cut);
+    138:     printf("command line:\n");
+    139:     for (size_t i = 0; i < ip + 1; i++)
+
+# 3 0x0042C3C0 in C:\Users\Мария\Desktop\assembler\prog.exe: main() at C:/Users/Мария/Desktop/assembler/main.cpp (53):
+
+     51:     CutBuffer(buffer_cut, buffer, code_size, human.size);
+     52: 
+=>   53:     int* code = MakeCode(&human, buffer_cut, buffer, &code_size);
+     54:     if (code == NULL)
+     55:     {
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\users\мария\codeblocks\mingw\include\txlib.h
+Compiled:	Nov  1 2024 20:08:41, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Nov 01 2024 20:25:23
+
+Run file:	C:\Users\Мария\Desktop\assembler\prog.exe
+Directory:	C:\Users\Мария\Desktop\assembler
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib предупреждает:
+
+Программа: C:\Users\Мария\Desktop\assembler\prog.exe,
+
+ВНЕЗАПНО: Нарушение доступа к памяти.
+
+#1: Исключение EXCEPTION_ACCESS_VIOLATION (0xC0000005) при выполнении кода по адресу 0x761C96B0 в функции strcmp(). Попытка прочесть данные по адресу NULL в модуле C:\WINDOWS\System32\msvcrt.dll. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+#1: TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400], Instance: 0x0050A2FC (32-bit), Flags: Cmdre0, Thread: 0x369C (Main), GetLastError(): 183 (Невозможно создать файл, так как он уже существует). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x761C96B0 in C:\WINDOWS\System32\msvcrt.dll: strcmp()
+
+# 1 0x0042F2F7 in C:\Users\Мария\Desktop\assembler\prog.exe: PutArgs() at C:/Users/Мария/Desktop/assembler/assembler.cpp (268):
+
+    266: {
+    267:     ErrorKeys getcmd_status = NO_ERRORS;
+=>  268:     while (CommandDefine2(buffer_cut[++(*bp)], &cmd_inf) == STX_ERR)
+    269:     {
+    270:         for (size_t i = 0; i < cmd_inf.args_quantity; i++)
+
+# 2 0x0042F13A in C:\Users\Мария\Desktop\assembler\prog.exe: HandleArgs2() at C:/Users/Мария/Desktop/assembler/assembler.cpp (260):
+
+    258:     // CHECK ARGUMENTS IN THE BUFFER FOR FITTING INTO TYPEARGS / EXISTING OF ANY ARGUMENTS
+    259: 
+=>  260:     PutArgs(cmd_inf, buffer_cut, bp, code, ip, table);
+    261: 
+    262:     return NO_ERRORS;
+
+# 3 0x0042E8E2 in C:\Users\Мария\Desktop\assembler\prog.exe: MakeCode() at C:/Users/Мария/Desktop/assembler/assembler.cpp (136):
+
+    134:         printf(CYAN("buffer_cut[%d] = %s\n"), bp, buffer_cut[bp]);
+    135: 
+=>  136:         HandleArgs2(code, &ip, buffer_cut, &bp, &table);
+    137: 
+    138:         CodeDump(code, ip);
+
+# 4 0x0042C3C0 in C:\Users\Мария\Desktop\assembler\prog.exe: main() at C:/Users/Мария/Desktop/assembler/main.cpp (53):
+
+     51:     CutBuffer(buffer_cut, buffer, code_size, human.size);
+     52: 
+=>   53:     int* code = MakeCode(&human, buffer_cut, buffer, &code_size);
+     54:     if (code == NULL)
+     55:     {
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\users\мария\codeblocks\mingw\include\txlib.h
+Compiled:	Nov  6 2024 16:34:31, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Nov 06 2024 16:34:38
+
+Run file:	C:\Users\Мария\Desktop\assembler\prog.exe
+Directory:	C:\Users\Мария\Desktop\assembler
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib соболезнует...
+
+Программа: C:\Users\Мария\Desktop\assembler\prog.exe,
+
+ВНЕЗАПНО: signal (11, 0x00): SIGSEGV: Доступ по неверному указателю. Ставьте ассерты! 
+
+Нарушение доступа к памяти.
+
+#1: Исключение EXCEPTION_ACCESS_VIOLATION (0xC0000005) при выполнении кода по адресу 0x761C96B0 в функции strcmp(). Попытка прочесть данные по адресу NULL в модуле C:\WINDOWS\System32\msvcrt.dll. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+С помощью функции signal() вы можете сами обработать эту ошибку.
+
+#2: TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400], Instance: 0x0050A2FC (32-bit), Flags: Cmdre0, Thread: 0x369C (Main), GetLastError(): 183 (Невозможно создать файл, так как он уже существует). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x761C96B0 in C:\WINDOWS\System32\msvcrt.dll: strcmp()
+
+# 1 0x0042F2F7 in C:\Users\Мария\Desktop\assembler\prog.exe: PutArgs() at C:/Users/Мария/Desktop/assembler/assembler.cpp (268):
+
+    266: {
+    267:     ErrorKeys getcmd_status = NO_ERRORS;
+=>  268:     while (CommandDefine2(buffer_cut[++(*bp)], &cmd_inf) == STX_ERR)
+    269:     {
+    270:         for (size_t i = 0; i < cmd_inf.args_quantity; i++)
+
+# 2 0x0042F13A in C:\Users\Мария\Desktop\assembler\prog.exe: HandleArgs2() at C:/Users/Мария/Desktop/assembler/assembler.cpp (260):
+
+    258:     // CHECK ARGUMENTS IN THE BUFFER FOR FITTING INTO TYPEARGS / EXISTING OF ANY ARGUMENTS
+    259: 
+=>  260:     PutArgs(cmd_inf, buffer_cut, bp, code, ip, table);
+    261: 
+    262:     return NO_ERRORS;
+
+# 3 0x0042E8E2 in C:\Users\Мария\Desktop\assembler\prog.exe: MakeCode() at C:/Users/Мария/Desktop/assembler/assembler.cpp (136):
+
+    134:         printf(CYAN("buffer_cut[%d] = %s\n"), bp, buffer_cut[bp]);
+    135: 
+=>  136:         HandleArgs2(code, &ip, buffer_cut, &bp, &table);
+    137: 
+    138:         CodeDump(code, ip);
+
+# 4 0x0042C3C0 in C:\Users\Мария\Desktop\assembler\prog.exe: main() at C:/Users/Мария/Desktop/assembler/main.cpp (53):
+
+     51:     CutBuffer(buffer_cut, buffer, code_size, human.size);
+     52: 
+=>   53:     int* code = MakeCode(&human, buffer_cut, buffer, &code_size);
+     54:     if (code == NULL)
+     55:     {
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\users\мария\codeblocks\mingw\include\txlib.h
+Compiled:	Nov  6 2024 16:34:31, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Nov 06 2024 16:34:39
+
+Run file:	C:\Users\Мария\Desktop\assembler\prog.exe
+Directory:	C:\Users\Мария\Desktop\assembler
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib предупреждает:
+
+Программа: C:\Users\Мария\Desktop\assembler\prog.exe,
+
+ВНЕЗАПНО: Нарушение доступа к памяти.
+
+#1: Исключение EXCEPTION_ACCESS_VIOLATION (0xC0000005) при выполнении кода по адресу 0x0042F7DE в функции CommandDefine2() в файле C:/Users/Мария/Desktop/assembler/commands_def.cpp на строке 49. Попытка записать данные по адресу NULL в модуле C:\Users\Мария\Desktop\assembler\prog.exe. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+#1: TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400], Instance: 0x0050A2FC (32-bit), Flags: Cmdre0, Thread: 0x2BF8 (Main), GetLastError(): 183 (Невозможно создать файл, так как он уже существует). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x0042F7DE in C:\Users\Мария\Desktop\assembler\prog.exe: CommandDefine2() at C:/Users/Мария/Desktop/assembler/commands_def.cpp (49):
+
+     47:     if (strcmp(command, "POP") == 0)
+     48:     {
+=>   49:         cmd_inf->cmd = POP;
+     50:         TypeArgs a[] = {REG, NUM};
+     51:         cmd_inf->args = a;
+
+# 1 0x0042F30B in C:\Users\Мария\Desktop\assembler\prog.exe: PutArgs() at C:/Users/Мария/Desktop/assembler/assembler.cpp (268):
+
+    266: {
+    267:     ErrorKeys getcmd_status = NO_ERRORS;
+=>  268:     while (CommandDefine2(buffer_cut[++(*bp)], {}) == STX_ERR)
+    269:     {
+    270:         for (size_t i = 0; i < cmd_inf.args_quantity; i++)
+
+# 2 0x0042F13A in C:\Users\Мария\Desktop\assembler\prog.exe: HandleArgs2() at C:/Users/Мария/Desktop/assembler/assembler.cpp (260):
+
+    258:     // CHECK ARGUMENTS IN THE BUFFER FOR FITTING INTO TYPEARGS / EXISTING OF ANY ARGUMENTS
+    259: 
+=>  260:     PutArgs(cmd_inf, buffer_cut, bp, code, ip, table);
+    261: 
+    262:     return NO_ERRORS;
+
+# 3 0x0042E8E2 in C:\Users\Мария\Desktop\assembler\prog.exe: MakeCode() at C:/Users/Мария/Desktop/assembler/assembler.cpp (136):
+
+    134:         printf(CYAN("buffer_cut[%d] = %s\n"), bp, buffer_cut[bp]);
+    135: 
+=>  136:         HandleArgs2(code, &ip, buffer_cut, &bp, &table);
+    137: 
+    138:         CodeDump(code, ip);
+
+# 4 0x0042C3C0 in C:\Users\Мария\Desktop\assembler\prog.exe: main() at C:/Users/Мария/Desktop/assembler/main.cpp (53):
+
+     51:     CutBuffer(buffer_cut, buffer, code_size, human.size);
+     52: 
+=>   53:     int* code = MakeCode(&human, buffer_cut, buffer, &code_size);
+     54:     if (code == NULL)
+     55:     {
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\users\мария\codeblocks\mingw\include\txlib.h
+Compiled:	Nov  6 2024 16:41:26, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Nov 06 2024 16:41:33
+
+Run file:	C:\Users\Мария\Desktop\assembler\prog.exe
+Directory:	C:\Users\Мария\Desktop\assembler
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib соболезнует...
+
+Программа: C:\Users\Мария\Desktop\assembler\prog.exe,
+
+ВНЕЗАПНО: signal (11, 0x00): SIGSEGV: Доступ по неверному указателю. Ставьте ассерты! 
+
+Нарушение доступа к памяти.
+
+#1: Исключение EXCEPTION_ACCESS_VIOLATION (0xC0000005) при выполнении кода по адресу 0x0042F7DE в функции CommandDefine2() в файле C:/Users/Мария/Desktop/assembler/commands_def.cpp на строке 49. Попытка записать данные по адресу NULL в модуле C:\Users\Мария\Desktop\assembler\prog.exe. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+С помощью функции signal() вы можете сами обработать эту ошибку.
+
+#2: TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400], Instance: 0x0050A2FC (32-bit), Flags: Cmdre0, Thread: 0x2BF8 (Main), GetLastError(): 183 (Невозможно создать файл, так как он уже существует). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x0042F7DE in C:\Users\Мария\Desktop\assembler\prog.exe: CommandDefine2() at C:/Users/Мария/Desktop/assembler/commands_def.cpp (49):
+
+     47:     if (strcmp(command, "POP") == 0)
+     48:     {
+=>   49:         cmd_inf->cmd = POP;
+     50:         TypeArgs a[] = {REG, NUM};
+     51:         cmd_inf->args = a;
+
+# 1 0x0042F30B in C:\Users\Мария\Desktop\assembler\prog.exe: PutArgs() at C:/Users/Мария/Desktop/assembler/assembler.cpp (268):
+
+    266: {
+    267:     ErrorKeys getcmd_status = NO_ERRORS;
+=>  268:     while (CommandDefine2(buffer_cut[++(*bp)], {}) == STX_ERR)
+    269:     {
+    270:         for (size_t i = 0; i < cmd_inf.args_quantity; i++)
+
+# 2 0x0042F13A in C:\Users\Мария\Desktop\assembler\prog.exe: HandleArgs2() at C:/Users/Мария/Desktop/assembler/assembler.cpp (260):
+
+    258:     // CHECK ARGUMENTS IN THE BUFFER FOR FITTING INTO TYPEARGS / EXISTING OF ANY ARGUMENTS
+    259: 
+=>  260:     PutArgs(cmd_inf, buffer_cut, bp, code, ip, table);
+    261: 
+    262:     return NO_ERRORS;
+
+# 3 0x0042E8E2 in C:\Users\Мария\Desktop\assembler\prog.exe: MakeCode() at C:/Users/Мария/Desktop/assembler/assembler.cpp (136):
+
+    134:         printf(CYAN("buffer_cut[%d] = %s\n"), bp, buffer_cut[bp]);
+    135: 
+=>  136:         HandleArgs2(code, &ip, buffer_cut, &bp, &table);
+    137: 
+    138:         CodeDump(code, ip);
+
+# 4 0x0042C3C0 in C:\Users\Мария\Desktop\assembler\prog.exe: main() at C:/Users/Мария/Desktop/assembler/main.cpp (53):
+
+     51:     CutBuffer(buffer_cut, buffer, code_size, human.size);
+     52: 
+=>   53:     int* code = MakeCode(&human, buffer_cut, buffer, &code_size);
+     54:     if (code == NULL)
+     55:     {
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\users\мария\codeblocks\mingw\include\txlib.h
+Compiled:	Nov  6 2024 16:41:26, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Nov 06 2024 16:41:32
+
+Run file:	C:\Users\Мария\Desktop\assembler\prog.exe
+Directory:	C:\Users\Мария\Desktop\assembler
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib предупреждает:
+
+Программа: C:\Users\Мария\Desktop\assembler\prog.exe,
+
+ВНЕЗАПНО: Нарушение доступа к памяти.
+
+#1: Исключение EXCEPTION_ACCESS_VIOLATION (0xC0000005) при выполнении кода по адресу 0x761C96B0 в функции strcmp(). Попытка прочесть данные по адресу NULL в модуле C:\WINDOWS\System32\msvcrt.dll. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+#1: TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400], Instance: 0x0050A2FC (32-bit), Flags: Cmdre0, Thread: 0x3458 (Main), GetLastError(): 183 (Невозможно создать файл, так как он уже существует). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x761C96B0 in C:\WINDOWS\System32\msvcrt.dll: strcmp()
+
+# 1 0x0042F30B in C:\Users\Мария\Desktop\assembler\prog.exe: PutArgs() at C:/Users/Мария/Desktop/assembler/assembler.cpp (268):
+
+    266: {
+    267:     ErrorKeys getcmd_status = NO_ERRORS;
+=>  268:     while (CommandDefine2(buffer_cut[++(*bp)], &cmd_inf) == STX_ERR)
+    269:     {
+    270:         for (size_t i = 0; i < cmd_inf.args_quantity; i++)
+
+# 2 0x0042F13A in C:\Users\Мария\Desktop\assembler\prog.exe: HandleArgs2() at C:/Users/Мария/Desktop/assembler/assembler.cpp (260):
+
+    258:     // CHECK ARGUMENTS IN THE BUFFER FOR FITTING INTO TYPEARGS / EXISTING OF ANY ARGUMENTS
+    259: 
+=>  260:     PutArgs(cmd_inf, buffer_cut, bp, code, ip, table);
+    261: 
+    262:     return NO_ERRORS;
+
+# 3 0x0042E8E2 in C:\Users\Мария\Desktop\assembler\prog.exe: MakeCode() at C:/Users/Мария/Desktop/assembler/assembler.cpp (136):
+
+    134:         printf(CYAN("buffer_cut[%d] = %s\n"), bp, buffer_cut[bp]);
+    135: 
+=>  136:         HandleArgs2(code, &ip, buffer_cut, &bp, &table);
+    137: 
+    138:         CodeDump(code, ip);
+
+# 4 0x0042C3C0 in C:\Users\Мария\Desktop\assembler\prog.exe: main() at C:/Users/Мария/Desktop/assembler/main.cpp (53):
+
+     51:     CutBuffer(buffer_cut, buffer, code_size, human.size);
+     52: 
+=>   53:     int* code = MakeCode(&human, buffer_cut, buffer, &code_size);
+     54:     if (code == NULL)
+     55:     {
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\users\мария\codeblocks\mingw\include\txlib.h
+Compiled:	Nov  6 2024 16:43:36, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Nov 06 2024 16:43:44
+
+Run file:	C:\Users\Мария\Desktop\assembler\prog.exe
+Directory:	C:\Users\Мария\Desktop\assembler
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib соболезнует...
+
+Программа: C:\Users\Мария\Desktop\assembler\prog.exe,
+
+ВНЕЗАПНО: signal (11, 0x00): SIGSEGV: Доступ по неверному указателю. Ставьте ассерты! 
+
+Нарушение доступа к памяти.
+
+#1: Исключение EXCEPTION_ACCESS_VIOLATION (0xC0000005) при выполнении кода по адресу 0x761C96B0 в функции strcmp(). Попытка прочесть данные по адресу NULL в модуле C:\WINDOWS\System32\msvcrt.dll. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+С помощью функции signal() вы можете сами обработать эту ошибку.
+
+#2: TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400], Instance: 0x0050A2FC (32-bit), Flags: Cmdre0, Thread: 0x3458 (Main), GetLastError(): 183 (Невозможно создать файл, так как он уже существует). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x761C96B0 in C:\WINDOWS\System32\msvcrt.dll: strcmp()
+
+# 1 0x0042F30B in C:\Users\Мария\Desktop\assembler\prog.exe: PutArgs() at C:/Users/Мария/Desktop/assembler/assembler.cpp (268):
+
+    266: {
+    267:     ErrorKeys getcmd_status = NO_ERRORS;
+=>  268:     while (CommandDefine2(buffer_cut[++(*bp)], &cmd_inf) == STX_ERR)
+    269:     {
+    270:         for (size_t i = 0; i < cmd_inf.args_quantity; i++)
+
+# 2 0x0042F13A in C:\Users\Мария\Desktop\assembler\prog.exe: HandleArgs2() at C:/Users/Мария/Desktop/assembler/assembler.cpp (260):
+
+    258:     // CHECK ARGUMENTS IN THE BUFFER FOR FITTING INTO TYPEARGS / EXISTING OF ANY ARGUMENTS
+    259: 
+=>  260:     PutArgs(cmd_inf, buffer_cut, bp, code, ip, table);
+    261: 
+    262:     return NO_ERRORS;
+
+# 3 0x0042E8E2 in C:\Users\Мария\Desktop\assembler\prog.exe: MakeCode() at C:/Users/Мария/Desktop/assembler/assembler.cpp (136):
+
+    134:         printf(CYAN("buffer_cut[%d] = %s\n"), bp, buffer_cut[bp]);
+    135: 
+=>  136:         HandleArgs2(code, &ip, buffer_cut, &bp, &table);
+    137: 
+    138:         CodeDump(code, ip);
+
+# 4 0x0042C3C0 in C:\Users\Мария\Desktop\assembler\prog.exe: main() at C:/Users/Мария/Desktop/assembler/main.cpp (53):
+
+     51:     CutBuffer(buffer_cut, buffer, code_size, human.size);
+     52: 
+=>   53:     int* code = MakeCode(&human, buffer_cut, buffer, &code_size);
+     54:     if (code == NULL)
+     55:     {
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\users\мария\codeblocks\mingw\include\txlib.h
+Compiled:	Nov  6 2024 16:43:36, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Nov 06 2024 16:43:45
+
+Run file:	C:\Users\Мария\Desktop\assembler\prog.exe
+Directory:	C:\Users\Мария\Desktop\assembler
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib предупреждает:
+
+Программа: C:\Users\Мария\Desktop\assembler\prog.exe,
+
+ВНЕЗАПНО: Нарушение доступа к памяти.
+
+#1: Исключение EXCEPTION_ACCESS_VIOLATION (0xC0000005) при выполнении кода по адресу 0x761C96B0 в функции strcmp(). Попытка прочесть данные по адресу NULL в модуле C:\WINDOWS\System32\msvcrt.dll. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+#1: TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400], Instance: 0x0050A2FC (32-bit), Flags: Cmdre0, Thread: 0x1DD4 (Main), GetLastError(): 183 (Невозможно создать файл, так как он уже существует). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x761C96B0 in C:\WINDOWS\System32\msvcrt.dll: strcmp()
+
+# 1 0x0042F322 in C:\Users\Мария\Desktop\assembler\prog.exe: PutArgs() at C:/Users/Мария/Desktop/assembler/assembler.cpp (268):
+
+    266: {
+    267:     ErrorKeys getcmd_status = NO_ERRORS;
+=>  268:     while (CommandDefine2(buffer_cut[++(*bp)], &cmd_inf) == STX_ERR)
+    269:     {
+    270:         for (size_t i = 0; i < cmd_inf.args_quantity; i++)
+
+# 2 0x0042F151 in C:\Users\Мария\Desktop\assembler\prog.exe: HandleArgs2() at C:/Users/Мария/Desktop/assembler/assembler.cpp (260):
+
+    258:     // CHECK ARGUMENTS IN THE BUFFER FOR FITTING INTO TYPEARGS / EXISTING OF ANY ARGUMENTS
+    259: 
+=>  260:     PutArgs(cmd_inf, buffer_cut, bp, code, ip, table);
+    261: 
+    262:     return NO_ERRORS;
+
+# 3 0x0042E8E2 in C:\Users\Мария\Desktop\assembler\prog.exe: MakeCode() at C:/Users/Мария/Desktop/assembler/assembler.cpp (136):
+
+    134:         printf(CYAN("buffer_cut[%d] = %s\n"), bp, buffer_cut[bp]);
+    135: 
+=>  136:         HandleArgs2(code, &ip, buffer_cut, &bp, &table);
+    137: 
+    138:         CodeDump(code, ip);
+
+# 4 0x0042C3C0 in C:\Users\Мария\Desktop\assembler\prog.exe: main() at C:/Users/Мария/Desktop/assembler/main.cpp (53):
+
+     51:     CutBuffer(buffer_cut, buffer, code_size, human.size);
+     52: 
+=>   53:     int* code = MakeCode(&human, buffer_cut, buffer, &code_size);
+     54:     if (code == NULL)
+     55:     {
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\users\мария\codeblocks\mingw\include\txlib.h
+Compiled:	Nov  6 2024 16:46:49, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Nov 06 2024 16:46:57
+
+Run file:	C:\Users\Мария\Desktop\assembler\prog.exe
+Directory:	C:\Users\Мария\Desktop\assembler
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib соболезнует...
+
+Программа: C:\Users\Мария\Desktop\assembler\prog.exe,
+
+ВНЕЗАПНО: signal (11, 0x00): SIGSEGV: Доступ по неверному указателю. Ставьте ассерты! 
+
+Нарушение доступа к памяти.
+
+#1: Исключение EXCEPTION_ACCESS_VIOLATION (0xC0000005) при выполнении кода по адресу 0x761C96B0 в функции strcmp(). Попытка прочесть данные по адресу NULL в модуле C:\WINDOWS\System32\msvcrt.dll. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+С помощью функции signal() вы можете сами обработать эту ошибку.
+
+#2: TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400], Instance: 0x0050A2FC (32-bit), Flags: Cmdre0, Thread: 0x1DD4 (Main), GetLastError(): 183 (Невозможно создать файл, так как он уже существует). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x761C96B0 in C:\WINDOWS\System32\msvcrt.dll: strcmp()
+
+# 1 0x0042F322 in C:\Users\Мария\Desktop\assembler\prog.exe: PutArgs() at C:/Users/Мария/Desktop/assembler/assembler.cpp (268):
+
+    266: {
+    267:     ErrorKeys getcmd_status = NO_ERRORS;
+=>  268:     while (CommandDefine2(buffer_cut[++(*bp)], &cmd_inf) == STX_ERR)
+    269:     {
+    270:         for (size_t i = 0; i < cmd_inf.args_quantity; i++)
+
+# 2 0x0042F151 in C:\Users\Мария\Desktop\assembler\prog.exe: HandleArgs2() at C:/Users/Мария/Desktop/assembler/assembler.cpp (260):
+
+    258:     // CHECK ARGUMENTS IN THE BUFFER FOR FITTING INTO TYPEARGS / EXISTING OF ANY ARGUMENTS
+    259: 
+=>  260:     PutArgs(cmd_inf, buffer_cut, bp, code, ip, table);
+    261: 
+    262:     return NO_ERRORS;
+
+# 3 0x0042E8E2 in C:\Users\Мария\Desktop\assembler\prog.exe: MakeCode() at C:/Users/Мария/Desktop/assembler/assembler.cpp (136):
+
+    134:         printf(CYAN("buffer_cut[%d] = %s\n"), bp, buffer_cut[bp]);
+    135: 
+=>  136:         HandleArgs2(code, &ip, buffer_cut, &bp, &table);
+    137: 
+    138:         CodeDump(code, ip);
+
+# 4 0x0042C3C0 in C:\Users\Мария\Desktop\assembler\prog.exe: main() at C:/Users/Мария/Desktop/assembler/main.cpp (53):
+
+     51:     CutBuffer(buffer_cut, buffer, code_size, human.size);
+     52: 
+=>   53:     int* code = MakeCode(&human, buffer_cut, buffer, &code_size);
+     54:     if (code == NULL)
+     55:     {
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\users\мария\codeblocks\mingw\include\txlib.h
+Compiled:	Nov  6 2024 16:46:49, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Nov 06 2024 16:46:57
+
+Run file:	C:\Users\Мария\Desktop\assembler\prog.exe
+Directory:	C:\Users\Мария\Desktop\assembler
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib предупреждает:
+
+Программа: C:\Users\Мария\Desktop\assembler\prog.exe,
+
+ВНЕЗАПНО: Нарушение доступа к памяти.
+
+#1: Исключение EXCEPTION_ACCESS_VIOLATION (0xC0000005) при выполнении кода по адресу 0x761C96B0 в функции strcmp(). Попытка прочесть данные по адресу NULL в модуле C:\WINDOWS\System32\msvcrt.dll. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+#1: TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400], Instance: 0x0050A2FC (32-bit), Flags: Cmdre0, Thread: 0x5210 (Main), GetLastError(): 183 (Невозможно создать файл, так как он уже существует). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x761C96B0 in C:\WINDOWS\System32\msvcrt.dll: strcmp()
+
+# 1 0x0042F322 in C:\Users\Мария\Desktop\assembler\prog.exe: PutArgs() at C:/Users/Мария/Desktop/assembler/assembler.cpp (268):
+
+    266: {
+    267:     ErrorKeys getcmd_status = NO_ERRORS;
+=>  268:     while (CommandDefine2(buffer_cut[++(*bp)], &cmd_inf) == STX_ERR)
+    269:     {
+    270:         for (size_t i = 0; i < cmd_inf.args_quantity; i++)
+
+# 2 0x0042F151 in C:\Users\Мария\Desktop\assembler\prog.exe: HandleArgs2() at C:/Users/Мария/Desktop/assembler/assembler.cpp (260):
+
+    258:     // CHECK ARGUMENTS IN THE BUFFER FOR FITTING INTO TYPEARGS / EXISTING OF ANY ARGUMENTS
+    259: 
+=>  260:     PutArgs(cmd_inf, buffer_cut, bp, code, ip, table);
+    261: 
+    262:     return NO_ERRORS;
+
+# 3 0x0042E8E2 in C:\Users\Мария\Desktop\assembler\prog.exe: MakeCode() at C:/Users/Мария/Desktop/assembler/assembler.cpp (136):
+
+    134:         printf(CYAN("buffer_cut[%d] = %s\n"), bp, buffer_cut[bp]);
+    135: 
+=>  136:         HandleArgs2(code, &ip, buffer_cut, &bp, &table);
+    137: 
+    138:         CodeDump(code, ip);
+
+# 4 0x0042C3C0 in C:\Users\Мария\Desktop\assembler\prog.exe: main() at C:/Users/Мария/Desktop/assembler/main.cpp (53):
+
+     51:     CutBuffer(buffer_cut, buffer, code_size, human.size);
+     52: 
+=>   53:     int* code = MakeCode(&human, buffer_cut, buffer, &code_size);
+     54:     if (code == NULL)
+     55:     {
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\users\мария\codeblocks\mingw\include\txlib.h
+Compiled:	Nov  6 2024 18:25:17, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Nov 06 2024 18:25:24
+
+Run file:	C:\Users\Мария\Desktop\assembler\prog.exe
+Directory:	C:\Users\Мария\Desktop\assembler
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib соболезнует...
+
+Программа: C:\Users\Мария\Desktop\assembler\prog.exe,
+
+ВНЕЗАПНО: signal (11, 0x00): SIGSEGV: Доступ по неверному указателю. Ставьте ассерты! 
+
+Нарушение доступа к памяти.
+
+#1: Исключение EXCEPTION_ACCESS_VIOLATION (0xC0000005) при выполнении кода по адресу 0x761C96B0 в функции strcmp(). Попытка прочесть данные по адресу NULL в модуле C:\WINDOWS\System32\msvcrt.dll. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+С помощью функции signal() вы можете сами обработать эту ошибку.
+
+#2: TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400], Instance: 0x0050A2FC (32-bit), Flags: Cmdre0, Thread: 0x5210 (Main), GetLastError(): 183 (Невозможно создать файл, так как он уже существует). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x761C96B0 in C:\WINDOWS\System32\msvcrt.dll: strcmp()
+
+# 1 0x0042F322 in C:\Users\Мария\Desktop\assembler\prog.exe: PutArgs() at C:/Users/Мария/Desktop/assembler/assembler.cpp (268):
+
+    266: {
+    267:     ErrorKeys getcmd_status = NO_ERRORS;
+=>  268:     while (CommandDefine2(buffer_cut[++(*bp)], &cmd_inf) == STX_ERR)
+    269:     {
+    270:         for (size_t i = 0; i < cmd_inf.args_quantity; i++)
+
+# 2 0x0042F151 in C:\Users\Мария\Desktop\assembler\prog.exe: HandleArgs2() at C:/Users/Мария/Desktop/assembler/assembler.cpp (260):
+
+    258:     // CHECK ARGUMENTS IN THE BUFFER FOR FITTING INTO TYPEARGS / EXISTING OF ANY ARGUMENTS
+    259: 
+=>  260:     PutArgs(cmd_inf, buffer_cut, bp, code, ip, table);
+    261: 
+    262:     return NO_ERRORS;
+
+# 3 0x0042E8E2 in C:\Users\Мария\Desktop\assembler\prog.exe: MakeCode() at C:/Users/Мария/Desktop/assembler/assembler.cpp (136):
+
+    134:         printf(CYAN("buffer_cut[%d] = %s\n"), bp, buffer_cut[bp]);
+    135: 
+=>  136:         HandleArgs2(code, &ip, buffer_cut, &bp, &table);
+    137: 
+    138:         CodeDump(code, ip);
+
+# 4 0x0042C3C0 in C:\Users\Мария\Desktop\assembler\prog.exe: main() at C:/Users/Мария/Desktop/assembler/main.cpp (53):
+
+     51:     CutBuffer(buffer_cut, buffer, code_size, human.size);
+     52: 
+=>   53:     int* code = MakeCode(&human, buffer_cut, buffer, &code_size);
+     54:     if (code == NULL)
+     55:     {
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\users\мария\codeblocks\mingw\include\txlib.h
+Compiled:	Nov  6 2024 18:25:17, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Nov 06 2024 18:25:23
+
+Run file:	C:\Users\Мария\Desktop\assembler\prog.exe
+Directory:	C:\Users\Мария\Desktop\assembler
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib предупреждает:
+
+Программа: C:\Users\Мария\Desktop\assembler\prog.exe,
+
+ВНЕЗАПНО: Нарушение доступа к памяти.
+
+#1: Исключение EXCEPTION_ACCESS_VIOLATION (0xC0000005) при выполнении кода по адресу 0x761C96B0 в функции strcmp(). Попытка прочесть данные по адресу NULL в модуле C:\WINDOWS\System32\msvcrt.dll. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+#1: TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400], Instance: 0x0050A2FC (32-bit), Flags: Cmdre0, Thread: 0x438C (Main), GetLastError(): 183 (Невозможно создать файл, так как он уже существует). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x761C96B0 in C:\WINDOWS\System32\msvcrt.dll: strcmp()
+
+# 1 0x0042F322 in C:\Users\Мария\Desktop\assembler\prog.exe: PutArgs() at C:/Users/Мария/Desktop/assembler/assembler.cpp (268):
+
+    266: {
+    267:     ErrorKeys getcmd_status = NO_ERRORS;
+=>  268:     while (CommandDefine2(buffer_cut[++(*bp)], &cmd_inf) == STX_ERR)
+    269:     {
+    270:         for (size_t i = 0; i < cmd_inf.args_quantity; i++)
+
+# 2 0x0042F151 in C:\Users\Мария\Desktop\assembler\prog.exe: HandleArgs2() at C:/Users/Мария/Desktop/assembler/assembler.cpp (260):
+
+    258:     // CHECK ARGUMENTS IN THE BUFFER FOR FITTING INTO TYPEARGS / EXISTING OF ANY ARGUMENTS
+    259: 
+=>  260:     PutArgs(cmd_inf, buffer_cut, bp, code, ip, table);
+    261: 
+    262:     return NO_ERRORS;
+
+# 3 0x0042E8E2 in C:\Users\Мария\Desktop\assembler\prog.exe: MakeCode() at C:/Users/Мария/Desktop/assembler/assembler.cpp (136):
+
+    134:         printf(CYAN("buffer_cut[%d] = %s\n"), bp, buffer_cut[bp]);
+    135: 
+=>  136:         HandleArgs2(code, &ip, buffer_cut, &bp, &table);
+    137: 
+    138:         CodeDump(code, ip);
+
+# 4 0x0042C3C0 in C:\Users\Мария\Desktop\assembler\prog.exe: main() at C:/Users/Мария/Desktop/assembler/main.cpp (53):
+
+     51:     CutBuffer(buffer_cut, buffer, code_size, human.size);
+     52: 
+=>   53:     int* code = MakeCode(&human, buffer_cut, buffer, &code_size);
+     54:     if (code == NULL)
+     55:     {
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\users\мария\codeblocks\mingw\include\txlib.h
+Compiled:	Nov  6 2024 18:26:16, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Nov 06 2024 18:26:21
+
+Run file:	C:\Users\Мария\Desktop\assembler\prog.exe
+Directory:	C:\Users\Мария\Desktop\assembler
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib соболезнует...
+
+Программа: C:\Users\Мария\Desktop\assembler\prog.exe,
+
+ВНЕЗАПНО: signal (11, 0x00): SIGSEGV: Доступ по неверному указателю. Ставьте ассерты! 
+
+Нарушение доступа к памяти.
+
+#1: Исключение EXCEPTION_ACCESS_VIOLATION (0xC0000005) при выполнении кода по адресу 0x761C96B0 в функции strcmp(). Попытка прочесть данные по адресу NULL в модуле C:\WINDOWS\System32\msvcrt.dll. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+С помощью функции signal() вы можете сами обработать эту ошибку.
+
+#2: TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400], Instance: 0x0050A2FC (32-bit), Flags: Cmdre0, Thread: 0x438C (Main), GetLastError(): 183 (Невозможно создать файл, так как он уже существует). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x761C96B0 in C:\WINDOWS\System32\msvcrt.dll: strcmp()
+
+# 1 0x0042F322 in C:\Users\Мария\Desktop\assembler\prog.exe: PutArgs() at C:/Users/Мария/Desktop/assembler/assembler.cpp (268):
+
+    266: {
+    267:     ErrorKeys getcmd_status = NO_ERRORS;
+=>  268:     while (CommandDefine2(buffer_cut[++(*bp)], &cmd_inf) == STX_ERR)
+    269:     {
+    270:         for (size_t i = 0; i < cmd_inf.args_quantity; i++)
+
+# 2 0x0042F151 in C:\Users\Мария\Desktop\assembler\prog.exe: HandleArgs2() at C:/Users/Мария/Desktop/assembler/assembler.cpp (260):
+
+    258:     // CHECK ARGUMENTS IN THE BUFFER FOR FITTING INTO TYPEARGS / EXISTING OF ANY ARGUMENTS
+    259: 
+=>  260:     PutArgs(cmd_inf, buffer_cut, bp, code, ip, table);
+    261: 
+    262:     return NO_ERRORS;
+
+# 3 0x0042E8E2 in C:\Users\Мария\Desktop\assembler\prog.exe: MakeCode() at C:/Users/Мария/Desktop/assembler/assembler.cpp (136):
+
+    134:         printf(CYAN("buffer_cut[%d] = %s\n"), bp, buffer_cut[bp]);
+    135: 
+=>  136:         HandleArgs2(code, &ip, buffer_cut, &bp, &table);
+    137: 
+    138:         CodeDump(code, ip);
+
+# 4 0x0042C3C0 in C:\Users\Мария\Desktop\assembler\prog.exe: main() at C:/Users/Мария/Desktop/assembler/main.cpp (53):
+
+     51:     CutBuffer(buffer_cut, buffer, code_size, human.size);
+     52: 
+=>   53:     int* code = MakeCode(&human, buffer_cut, buffer, &code_size);
+     54:     if (code == NULL)
+     55:     {
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\users\мария\codeblocks\mingw\include\txlib.h
+Compiled:	Nov  6 2024 18:26:16, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Nov 06 2024 18:26:21
+
+Run file:	C:\Users\Мария\Desktop\assembler\prog.exe
+Directory:	C:\Users\Мария\Desktop\assembler
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib предупреждает:
+
+Программа: C:\Users\Мария\Desktop\assembler\prog.exe,
+
+ВНЕЗАПНО: Нарушение доступа к памяти.
+
+#1: Исключение EXCEPTION_ACCESS_VIOLATION (0xC0000005) при выполнении кода по адресу 0x761C96B0 в функции strcmp(). Попытка прочесть данные по адресу NULL в модуле C:\WINDOWS\System32\msvcrt.dll. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+#1: TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400], Instance: 0x0050A2FC (32-bit), Flags: Cmdre0, Thread: 0x4260 (Main), GetLastError(): 183 (Невозможно создать файл, так как он уже существует). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x761C96B0 in C:\WINDOWS\System32\msvcrt.dll: strcmp()
+
+# 1 0x0042F354 in C:\Users\Мария\Desktop\assembler\prog.exe: PutArgs() at C:/Users/Мария/Desktop/assembler/assembler.cpp (269):
+
+    267: {
+    268:     ErrorKeys getcmd_status = NO_ERRORS;
+=>  269:     while (CommandDefine2(buffer_cut[++(*bp)], &cmd_inf) == STX_ERR)
+    270:     {
+    271:         ON_DEBUG(for (size_t i = 0; i < cmd_inf.args_quantity; i++){ printf(MAGENTA("%d "), cmd_inf.args[i]);})
+
+# 2 0x0042F151 in C:\Users\Мария\Desktop\assembler\prog.exe: HandleArgs2() at C:/Users/Мария/Desktop/assembler/assembler.cpp (261):
+
+    259:     // CHECK ARGUMENTS IN THE BUFFER FOR FITTING INTO TYPEARGS / EXISTING OF ANY ARGUMENTS
+    260: 
+=>  261:     PutArgs(cmd_inf, buffer_cut, bp, code, ip, table);
+    262: 
+    263:     return NO_ERRORS;
+
+# 3 0x0042E8E2 in C:\Users\Мария\Desktop\assembler\prog.exe: MakeCode() at C:/Users/Мария/Desktop/assembler/assembler.cpp (137):
+
+    135:         printf(CYAN("buffer_cut[%d] = %s\n"), bp, buffer_cut[bp]);
+    136: 
+=>  137:         HandleArgs2(code, &ip, buffer_cut, &bp, &table);
+    138: 
+    139:         CodeDump(code, ip);
+
+# 4 0x0042C3C0 in C:\Users\Мария\Desktop\assembler\prog.exe: main() at C:/Users/Мария/Desktop/assembler/main.cpp (53):
+
+     51:     CutBuffer(buffer_cut, buffer, code_size, human.size);
+     52: 
+=>   53:     int* code = MakeCode(&human, buffer_cut, buffer, &code_size);
+     54:     if (code == NULL)
+     55:     {
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\users\мария\codeblocks\mingw\include\txlib.h
+Compiled:	Nov  6 2024 18:29:54, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Nov 06 2024 18:30:03
+
+Run file:	C:\Users\Мария\Desktop\assembler\prog.exe
+Directory:	C:\Users\Мария\Desktop\assembler
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib соболезнует...
+
+Программа: C:\Users\Мария\Desktop\assembler\prog.exe,
+
+ВНЕЗАПНО: signal (11, 0x00): SIGSEGV: Доступ по неверному указателю. Ставьте ассерты! 
+
+Нарушение доступа к памяти.
+
+#1: Исключение EXCEPTION_ACCESS_VIOLATION (0xC0000005) при выполнении кода по адресу 0x761C96B0 в функции strcmp(). Попытка прочесть данные по адресу NULL в модуле C:\WINDOWS\System32\msvcrt.dll. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+С помощью функции signal() вы можете сами обработать эту ошибку.
+
+#2: TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400], Instance: 0x0050A2FC (32-bit), Flags: Cmdre0, Thread: 0x4260 (Main), GetLastError(): 183 (Невозможно создать файл, так как он уже существует). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x761C96B0 in C:\WINDOWS\System32\msvcrt.dll: strcmp()
+
+# 1 0x0042F354 in C:\Users\Мария\Desktop\assembler\prog.exe: PutArgs() at C:/Users/Мария/Desktop/assembler/assembler.cpp (269):
+
+    267: {
+    268:     ErrorKeys getcmd_status = NO_ERRORS;
+=>  269:     while (CommandDefine2(buffer_cut[++(*bp)], &cmd_inf) == STX_ERR)
+    270:     {
+    271:         ON_DEBUG(for (size_t i = 0; i < cmd_inf.args_quantity; i++){ printf(MAGENTA("%d "), cmd_inf.args[i]);})
+
+# 2 0x0042F151 in C:\Users\Мария\Desktop\assembler\prog.exe: HandleArgs2() at C:/Users/Мария/Desktop/assembler/assembler.cpp (261):
+
+    259:     // CHECK ARGUMENTS IN THE BUFFER FOR FITTING INTO TYPEARGS / EXISTING OF ANY ARGUMENTS
+    260: 
+=>  261:     PutArgs(cmd_inf, buffer_cut, bp, code, ip, table);
+    262: 
+    263:     return NO_ERRORS;
+
+# 3 0x0042E8E2 in C:\Users\Мария\Desktop\assembler\prog.exe: MakeCode() at C:/Users/Мария/Desktop/assembler/assembler.cpp (137):
+
+    135:         printf(CYAN("buffer_cut[%d] = %s\n"), bp, buffer_cut[bp]);
+    136: 
+=>  137:         HandleArgs2(code, &ip, buffer_cut, &bp, &table);
+    138: 
+    139:         CodeDump(code, ip);
+
+# 4 0x0042C3C0 in C:\Users\Мария\Desktop\assembler\prog.exe: main() at C:/Users/Мария/Desktop/assembler/main.cpp (53):
+
+     51:     CutBuffer(buffer_cut, buffer, code_size, human.size);
+     52: 
+=>   53:     int* code = MakeCode(&human, buffer_cut, buffer, &code_size);
+     54:     if (code == NULL)
+     55:     {
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\users\мария\codeblocks\mingw\include\txlib.h
+Compiled:	Nov  6 2024 18:29:54, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Nov 06 2024 18:30:03
+
+Run file:	C:\Users\Мария\Desktop\assembler\prog.exe
+Directory:	C:\Users\Мария\Desktop\assembler
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib предупреждает:
+
+Программа: C:\Users\Мария\Desktop\assembler\prog.exe,
+
+ВНЕЗАПНО: Нарушение доступа к памяти.
+
+#1: Исключение EXCEPTION_ACCESS_VIOLATION (0xC0000005) при выполнении кода по адресу 0x761C96B0 в функции strcmp(). Попытка прочесть данные по адресу NULL в модуле C:\WINDOWS\System32\msvcrt.dll. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+#1: TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400], Instance: 0x0050A2FC (32-bit), Flags: Cmdre0, Thread: 0x5914 (Main), GetLastError(): 183 (Невозможно создать файл, так как он уже существует). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x761C96B0 in C:\WINDOWS\System32\msvcrt.dll: strcmp()
+
+# 1 0x0042F360 in C:\Users\Мария\Desktop\assembler\prog.exe: PutArgs() at C:/Users/Мария/Desktop/assembler/assembler.cpp (269):
+
+    267: {
+    268:     ErrorKeys getcmd_status = NO_ERRORS;
+=>  269:     while (CommandDefine2(buffer_cut[++(*bp)], &cmd_inf) == STX_ERR)
+    270:     {
+    271:         ON_DEBUG(for (size_t i = 0; i < cmd_inf.args_quantity; i++){ printf(MAGENTA("%d "), cmd_inf.args[i]);})
+
+# 2 0x0042F151 in C:\Users\Мария\Desktop\assembler\prog.exe: HandleArgs2() at C:/Users/Мария/Desktop/assembler/assembler.cpp (261):
+
+    259:     // CHECK ARGUMENTS IN THE BUFFER FOR FITTING INTO TYPEARGS / EXISTING OF ANY ARGUMENTS
+    260: 
+=>  261:     PutArgs(cmd_inf, buffer_cut, bp, code, ip, table);
+    262: 
+    263:     return NO_ERRORS;
+
+# 3 0x0042E8E2 in C:\Users\Мария\Desktop\assembler\prog.exe: MakeCode() at C:/Users/Мария/Desktop/assembler/assembler.cpp (137):
+
+    135:         printf(CYAN("buffer_cut[%d] = %s\n"), bp, buffer_cut[bp]);
+    136: 
+=>  137:         HandleArgs2(code, &ip, buffer_cut, &bp, &table);
+    138: 
+    139:         CodeDump(code, ip);
+
+# 4 0x0042C3C0 in C:\Users\Мария\Desktop\assembler\prog.exe: main() at C:/Users/Мария/Desktop/assembler/main.cpp (53):
+
+     51:     CutBuffer(buffer_cut, buffer, code_size, human.size);
+     52: 
+=>   53:     int* code = MakeCode(&human, buffer_cut, buffer, &code_size);
+     54:     if (code == NULL)
+     55:     {
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\users\мария\codeblocks\mingw\include\txlib.h
+Compiled:	Nov  6 2024 18:30:59, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Nov 06 2024 18:31:06
+
+Run file:	C:\Users\Мария\Desktop\assembler\prog.exe
+Directory:	C:\Users\Мария\Desktop\assembler
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib соболезнует...
+
+Программа: C:\Users\Мария\Desktop\assembler\prog.exe,
+
+ВНЕЗАПНО: signal (11, 0x00): SIGSEGV: Доступ по неверному указателю. Ставьте ассерты! 
+
+Нарушение доступа к памяти.
+
+#1: Исключение EXCEPTION_ACCESS_VIOLATION (0xC0000005) при выполнении кода по адресу 0x761C96B0 в функции strcmp(). Попытка прочесть данные по адресу NULL в модуле C:\WINDOWS\System32\msvcrt.dll. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+С помощью функции signal() вы можете сами обработать эту ошибку.
+
+#2: TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400], Instance: 0x0050A2FC (32-bit), Flags: Cmdre0, Thread: 0x5914 (Main), GetLastError(): 183 (Невозможно создать файл, так как он уже существует). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x761C96B0 in C:\WINDOWS\System32\msvcrt.dll: strcmp()
+
+# 1 0x0042F360 in C:\Users\Мария\Desktop\assembler\prog.exe: PutArgs() at C:/Users/Мария/Desktop/assembler/assembler.cpp (269):
+
+    267: {
+    268:     ErrorKeys getcmd_status = NO_ERRORS;
+=>  269:     while (CommandDefine2(buffer_cut[++(*bp)], &cmd_inf) == STX_ERR)
+    270:     {
+    271:         ON_DEBUG(for (size_t i = 0; i < cmd_inf.args_quantity; i++){ printf(MAGENTA("%d "), cmd_inf.args[i]);})
+
+# 2 0x0042F151 in C:\Users\Мария\Desktop\assembler\prog.exe: HandleArgs2() at C:/Users/Мария/Desktop/assembler/assembler.cpp (261):
+
+    259:     // CHECK ARGUMENTS IN THE BUFFER FOR FITTING INTO TYPEARGS / EXISTING OF ANY ARGUMENTS
+    260: 
+=>  261:     PutArgs(cmd_inf, buffer_cut, bp, code, ip, table);
+    262: 
+    263:     return NO_ERRORS;
+
+# 3 0x0042E8E2 in C:\Users\Мария\Desktop\assembler\prog.exe: MakeCode() at C:/Users/Мария/Desktop/assembler/assembler.cpp (137):
+
+    135:         printf(CYAN("buffer_cut[%d] = %s\n"), bp, buffer_cut[bp]);
+    136: 
+=>  137:         HandleArgs2(code, &ip, buffer_cut, &bp, &table);
+    138: 
+    139:         CodeDump(code, ip);
+
+# 4 0x0042C3C0 in C:\Users\Мария\Desktop\assembler\prog.exe: main() at C:/Users/Мария/Desktop/assembler/main.cpp (53):
+
+     51:     CutBuffer(buffer_cut, buffer, code_size, human.size);
+     52: 
+=>   53:     int* code = MakeCode(&human, buffer_cut, buffer, &code_size);
+     54:     if (code == NULL)
+     55:     {
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\users\мария\codeblocks\mingw\include\txlib.h
+Compiled:	Nov  6 2024 18:30:59, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Nov 06 2024 18:31:06
+
+Run file:	C:\Users\Мария\Desktop\assembler\prog.exe
+Directory:	C:\Users\Мария\Desktop\assembler
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib предупреждает:
+
+Программа: C:\Users\Мария\Desktop\assembler\prog.exe,
+
+ВНЕЗАПНО: Нарушение доступа к памяти.
+
+#1: Исключение EXCEPTION_ACCESS_VIOLATION (0xC0000005) при выполнении кода по адресу 0x761C96F9 в функции strcmp(). Попытка прочесть данные по адресу NULL в модуле C:\WINDOWS\System32\msvcrt.dll. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+#1: TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400], Instance: 0x0050A2FC (32-bit), Flags: Cmdre0, Thread: 0x5A5C (Main), GetLastError(): 183 (Невозможно создать файл, так как он уже существует). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x761C96F9 in C:\WINDOWS\System32\msvcrt.dll: strcmp()
+
+# 1 0x0042EB7C in C:\Users\Мария\Desktop\assembler\prog.exe: HandleArgs() at C:/Users/Мария/Desktop/assembler/assembler.cpp (179):
+
+    177:     if (CommandDefine(buffer_cut[*bp]) == JMP && CheckLabel(buffer_cut[*bp + 1], table))
+    178:     {
+=>  179:         MarkLabelRef(code, ip, buffer_cut[(*bp)++], table);
+    180:         args_quantity = 1;
+    181:     }
+
+# 2 0x0042E8EE in C:\Users\Мария\Desktop\assembler\prog.exe: MakeCode() at C:/Users/Мария/Desktop/assembler/assembler.cpp (137):
+
+    135:         printf(CYAN("buffer_cut[%d] = %s\n"), bp, buffer_cut[bp]);
+    136: 
+=>  137:         HandleArgs(code, &ip, buffer_cut, &bp, &table);
+    138: 
+    139:         CodeDump(code, ip);
+
+# 3 0x0042C3C0 in C:\Users\Мария\Desktop\assembler\prog.exe: main() at C:/Users/Мария/Desktop/assembler/main.cpp (53):
+
+     51:     CutBuffer(buffer_cut, buffer, code_size, human.size);
+     52: 
+=>   53:     int* code = MakeCode(&human, buffer_cut, buffer, &code_size);
+     54:     if (code == NULL)
+     55:     {
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\users\мария\codeblocks\mingw\include\txlib.h
+Compiled:	Nov  8 2024 16:18:33, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Nov 08 2024 16:18:56
+
+Run file:	C:\Users\Мария\Desktop\assembler\prog.exe
+Directory:	C:\Users\Мария\Desktop\assembler
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib соболезнует...
+
+Программа: C:\Users\Мария\Desktop\assembler\prog.exe,
+
+ВНЕЗАПНО: signal (11, 0x00): SIGSEGV: Доступ по неверному указателю. Ставьте ассерты! 
+
+Нарушение доступа к памяти.
+
+#1: Исключение EXCEPTION_ACCESS_VIOLATION (0xC0000005) при выполнении кода по адресу 0x761C96F9 в функции strcmp(). Попытка прочесть данные по адресу NULL в модуле C:\WINDOWS\System32\msvcrt.dll. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+С помощью функции signal() вы можете сами обработать эту ошибку.
+
+#2: TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400], Instance: 0x0050A2FC (32-bit), Flags: Cmdre0, Thread: 0x5A5C (Main), GetLastError(): 183 (Невозможно создать файл, так как он уже существует). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x761C96F9 in C:\WINDOWS\System32\msvcrt.dll: strcmp()
+
+# 1 0x0042EB7C in C:\Users\Мария\Desktop\assembler\prog.exe: HandleArgs() at C:/Users/Мария/Desktop/assembler/assembler.cpp (179):
+
+    177:     if (CommandDefine(buffer_cut[*bp]) == JMP && CheckLabel(buffer_cut[*bp + 1], table))
+    178:     {
+=>  179:         MarkLabelRef(code, ip, buffer_cut[(*bp)++], table);
+    180:         args_quantity = 1;
+    181:     }
+
+# 2 0x0042E8EE in C:\Users\Мария\Desktop\assembler\prog.exe: MakeCode() at C:/Users/Мария/Desktop/assembler/assembler.cpp (137):
+
+    135:         printf(CYAN("buffer_cut[%d] = %s\n"), bp, buffer_cut[bp]);
+    136: 
+=>  137:         HandleArgs(code, &ip, buffer_cut, &bp, &table);
+    138: 
+    139:         CodeDump(code, ip);
+
+# 3 0x0042C3C0 in C:\Users\Мария\Desktop\assembler\prog.exe: main() at C:/Users/Мария/Desktop/assembler/main.cpp (53):
+
+     51:     CutBuffer(buffer_cut, buffer, code_size, human.size);
+     52: 
+=>   53:     int* code = MakeCode(&human, buffer_cut, buffer, &code_size);
+     54:     if (code == NULL)
+     55:     {
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\users\мария\codeblocks\mingw\include\txlib.h
+Compiled:	Nov  8 2024 16:18:33, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Nov 08 2024 16:18:56
+
+Run file:	C:\Users\Мария\Desktop\assembler\prog.exe
+Directory:	C:\Users\Мария\Desktop\assembler
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib предупреждает:
+
+Программа: C:\Users\Мария\Desktop\assembler\prog.exe,
+
+ВНЕЗАПНО: Нарушение доступа к памяти.
+
+#1: Исключение EXCEPTION_ACCESS_VIOLATION (0xC0000005) при выполнении кода по адресу 0x761C96F9 в функции strcmp(). Попытка прочесть данные по адресу NULL в модуле C:\WINDOWS\System32\msvcrt.dll. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+#1: TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400], Instance: 0x0050A2FC (32-bit), Flags: Cmdre0, Thread: 0x52EC (Main), GetLastError(): 183 (Невозможно создать файл, так как он уже существует). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x761C96F9 in C:\WINDOWS\System32\msvcrt.dll: strcmp()
+
+# 1 0x0042EB7C in C:\Users\Мария\Desktop\assembler\prog.exe: HandleArgs() at C:/Users/Мария/Desktop/assembler/assembler.cpp (181):
+
+    179:     if (CommandDefine(buffer_cut[*bp]) == JMP && CheckLabel(buffer_cut[*bp + 1], table))
+    180:     {
+=>  181:         MarkLabelRef(code, ip, buffer_cut[(*bp)++], table);
+    182:         *bp += 1;
+    183:         return NO_ERRORS;
+
+# 2 0x0042E8EE in C:\Users\Мария\Desktop\assembler\prog.exe: MakeCode() at C:/Users/Мария/Desktop/assembler/assembler.cpp (137):
+
+    135:         printf(CYAN("buffer_cut[%d] = %s\n"), bp, buffer_cut[bp]);
+    136: 
+=>  137:         HandleArgs(code, &ip, buffer_cut, &bp, &table);
+    138: 
+    139:         CodeDump(code, ip);
+
+# 3 0x0042C3C0 in C:\Users\Мария\Desktop\assembler\prog.exe: main() at C:/Users/Мария/Desktop/assembler/main.cpp (53):
+
+     51:     CutBuffer(buffer_cut, buffer, code_size, human.size);
+     52: 
+=>   53:     int* code = MakeCode(&human, buffer_cut, buffer, &code_size);
+     54:     if (code == NULL)
+     55:     {
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\users\мария\codeblocks\mingw\include\txlib.h
+Compiled:	Nov  8 2024 16:22:20, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Nov 08 2024 16:22:32
+
+Run file:	C:\Users\Мария\Desktop\assembler\prog.exe
+Directory:	C:\Users\Мария\Desktop\assembler
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib соболезнует...
+
+Программа: C:\Users\Мария\Desktop\assembler\prog.exe,
+
+ВНЕЗАПНО: signal (11, 0x00): SIGSEGV: Доступ по неверному указателю. Ставьте ассерты! 
+
+Нарушение доступа к памяти.
+
+#1: Исключение EXCEPTION_ACCESS_VIOLATION (0xC0000005) при выполнении кода по адресу 0x761C96F9 в функции strcmp(). Попытка прочесть данные по адресу NULL в модуле C:\WINDOWS\System32\msvcrt.dll. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+С помощью функции signal() вы можете сами обработать эту ошибку.
+
+#2: TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400], Instance: 0x0050A2FC (32-bit), Flags: Cmdre0, Thread: 0x52EC (Main), GetLastError(): 183 (Невозможно создать файл, так как он уже существует). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x761C96F9 in C:\WINDOWS\System32\msvcrt.dll: strcmp()
+
+# 1 0x0042EB7C in C:\Users\Мария\Desktop\assembler\prog.exe: HandleArgs() at C:/Users/Мария/Desktop/assembler/assembler.cpp (181):
+
+    179:     if (CommandDefine(buffer_cut[*bp]) == JMP && CheckLabel(buffer_cut[*bp + 1], table))
+    180:     {
+=>  181:         MarkLabelRef(code, ip, buffer_cut[(*bp)++], table);
+    182:         *bp += 1;
+    183:         return NO_ERRORS;
+
+# 2 0x0042E8EE in C:\Users\Мария\Desktop\assembler\prog.exe: MakeCode() at C:/Users/Мария/Desktop/assembler/assembler.cpp (137):
+
+    135:         printf(CYAN("buffer_cut[%d] = %s\n"), bp, buffer_cut[bp]);
+    136: 
+=>  137:         HandleArgs(code, &ip, buffer_cut, &bp, &table);
+    138: 
+    139:         CodeDump(code, ip);
+
+# 3 0x0042C3C0 in C:\Users\Мария\Desktop\assembler\prog.exe: main() at C:/Users/Мария/Desktop/assembler/main.cpp (53):
+
+     51:     CutBuffer(buffer_cut, buffer, code_size, human.size);
+     52: 
+=>   53:     int* code = MakeCode(&human, buffer_cut, buffer, &code_size);
+     54:     if (code == NULL)
+     55:     {
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\users\мария\codeblocks\mingw\include\txlib.h
+Compiled:	Nov  8 2024 16:22:20, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Nov 08 2024 16:22:33
+
+Run file:	C:\Users\Мария\Desktop\assembler\prog.exe
+Directory:	C:\Users\Мария\Desktop\assembler
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib предупреждает:
+
+Программа: C:\Users\Мария\Desktop\assembler\prog.exe,
+
+ВНЕЗАПНО: Нарушение доступа к памяти.
+
+#1: Исключение EXCEPTION_ACCESS_VIOLATION (0xC0000005) при выполнении кода по адресу 0x761C96F9 в функции strcmp(). Попытка прочесть данные по адресу NULL в модуле C:\WINDOWS\System32\msvcrt.dll. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+#1: TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400], Instance: 0x0050A2FC (32-bit), Flags: Cmdre0, Thread: 0x45F0 (Main), GetLastError(): 183 (Невозможно создать файл, так как он уже существует). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x761C96F9 in C:\WINDOWS\System32\msvcrt.dll: strcmp()
+
+# 1 0x0042EB7C in C:\Users\Мария\Desktop\assembler\prog.exe: HandleArgs() at C:/Users/Мария/Desktop/assembler/assembler.cpp (181):
+
+    179:     if (CommandDefine(buffer_cut[*bp]) == JMP && CheckLabel(buffer_cut[*bp + 1], table))
+    180:     {
+=>  181:         MarkLabelRef(code, ip, buffer_cut[(*bp)++], table);
+    182:         *bp += 1;
+    183:         return NO_ERRORS;
+
+# 2 0x0042E8EE in C:\Users\Мария\Desktop\assembler\prog.exe: MakeCode() at C:/Users/Мария/Desktop/assembler/assembler.cpp (137):
+
+    135:         printf(CYAN("buffer_cut[%d] = %s\n"), bp, buffer_cut[bp]);
+    136: 
+=>  137:         HandleArgs(code, &ip, buffer_cut, &bp, &table);
+    138: 
+    139:         CodeDump(code, ip);
+
+# 3 0x0042C3C0 in C:\Users\Мария\Desktop\assembler\prog.exe: main() at C:/Users/Мария/Desktop/assembler/main.cpp (53):
+
+     51:     CutBuffer(buffer_cut, buffer, code_size, human.size);
+     52: 
+=>   53:     int* code = MakeCode(&human, buffer_cut, buffer, &code_size);
+     54:     if (code == NULL)
+     55:     {
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\users\мария\codeblocks\mingw\include\txlib.h
+Compiled:	Nov  8 2024 16:26:22, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Nov 08 2024 16:26:29
+
+Run file:	C:\Users\Мария\Desktop\assembler\prog.exe
+Directory:	C:\Users\Мария\Desktop\assembler
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib соболезнует...
+
+Программа: C:\Users\Мария\Desktop\assembler\prog.exe,
+
+ВНЕЗАПНО: signal (11, 0x00): SIGSEGV: Доступ по неверному указателю. Ставьте ассерты! 
+
+Нарушение доступа к памяти.
+
+#1: Исключение EXCEPTION_ACCESS_VIOLATION (0xC0000005) при выполнении кода по адресу 0x761C96F9 в функции strcmp(). Попытка прочесть данные по адресу NULL в модуле C:\WINDOWS\System32\msvcrt.dll. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+С помощью функции signal() вы можете сами обработать эту ошибку.
+
+#2: TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400], Instance: 0x0050A2FC (32-bit), Flags: Cmdre0, Thread: 0x45F0 (Main), GetLastError(): 183 (Невозможно создать файл, так как он уже существует). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x761C96F9 in C:\WINDOWS\System32\msvcrt.dll: strcmp()
+
+# 1 0x0042EB7C in C:\Users\Мария\Desktop\assembler\prog.exe: HandleArgs() at C:/Users/Мария/Desktop/assembler/assembler.cpp (181):
+
+    179:     if (CommandDefine(buffer_cut[*bp]) == JMP && CheckLabel(buffer_cut[*bp + 1], table))
+    180:     {
+=>  181:         MarkLabelRef(code, ip, buffer_cut[(*bp)++], table);
+    182:         *bp += 1;
+    183:         return NO_ERRORS;
+
+# 2 0x0042E8EE in C:\Users\Мария\Desktop\assembler\prog.exe: MakeCode() at C:/Users/Мария/Desktop/assembler/assembler.cpp (137):
+
+    135:         printf(CYAN("buffer_cut[%d] = %s\n"), bp, buffer_cut[bp]);
+    136: 
+=>  137:         HandleArgs(code, &ip, buffer_cut, &bp, &table);
+    138: 
+    139:         CodeDump(code, ip);
+
+# 3 0x0042C3C0 in C:\Users\Мария\Desktop\assembler\prog.exe: main() at C:/Users/Мария/Desktop/assembler/main.cpp (53):
+
+     51:     CutBuffer(buffer_cut, buffer, code_size, human.size);
+     52: 
+=>   53:     int* code = MakeCode(&human, buffer_cut, buffer, &code_size);
+     54:     if (code == NULL)
+     55:     {
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\users\мария\codeblocks\mingw\include\txlib.h
+Compiled:	Nov  8 2024 16:26:22, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Nov 08 2024 16:26:29
+
+Run file:	C:\Users\Мария\Desktop\assembler\prog.exe
+Directory:	C:\Users\Мария\Desktop\assembler
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib предупреждает:
+
+Программа: C:\Users\Мария\Desktop\assembler\prog.exe,
+
+ВНЕЗАПНО: Нарушение доступа к памяти.
+
+#1: Исключение EXCEPTION_ACCESS_VIOLATION (0xC0000005) при выполнении кода по адресу 0x761C96F9 в функции strcmp(). Попытка прочесть данные по адресу NULL в модуле C:\WINDOWS\System32\msvcrt.dll. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+#1: TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400], Instance: 0x0050A2FC (32-bit), Flags: Cmdre0, Thread: 0x3ACC (Main), GetLastError(): 183 (Невозможно создать файл, так как он уже существует). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x761C96F9 in C:\WINDOWS\System32\msvcrt.dll: strcmp()
+
+# 1 0x0042EB8D in C:\Users\Мария\Desktop\assembler\prog.exe: HandleArgs() at C:/Users/Мария/Desktop/assembler/assembler.cpp (183):
+
+    181:         printf("call MarkLabelRef\n");
+    182:         getchar();
+=>  183:         MarkLabelRef(code, ip, buffer_cut[(*bp)++], table);
+    184:         *bp += 1;
+    185:         return NO_ERRORS;
+
+# 2 0x0042E8EE in C:\Users\Мария\Desktop\assembler\prog.exe: MakeCode() at C:/Users/Мария/Desktop/assembler/assembler.cpp (137):
+
+    135:         printf(CYAN("buffer_cut[%d] = %s\n"), bp, buffer_cut[bp]);
+    136: 
+=>  137:         HandleArgs(code, &ip, buffer_cut, &bp, &table);
+    138: 
+    139:         CodeDump(code, ip);
+
+# 3 0x0042C3C0 in C:\Users\Мария\Desktop\assembler\prog.exe: main() at C:/Users/Мария/Desktop/assembler/main.cpp (53):
+
+     51:     CutBuffer(buffer_cut, buffer, code_size, human.size);
+     52: 
+=>   53:     int* code = MakeCode(&human, buffer_cut, buffer, &code_size);
+     54:     if (code == NULL)
+     55:     {
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\users\мария\codeblocks\mingw\include\txlib.h
+Compiled:	Nov  8 2024 16:28:05, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Nov 08 2024 16:28:14
+
+Run file:	C:\Users\Мария\Desktop\assembler\prog.exe
+Directory:	C:\Users\Мария\Desktop\assembler
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib соболезнует...
+
+Программа: C:\Users\Мария\Desktop\assembler\prog.exe,
+
+ВНЕЗАПНО: signal (11, 0x00): SIGSEGV: Доступ по неверному указателю. Ставьте ассерты! 
+
+Нарушение доступа к памяти.
+
+#1: Исключение EXCEPTION_ACCESS_VIOLATION (0xC0000005) при выполнении кода по адресу 0x761C96F9 в функции strcmp(). Попытка прочесть данные по адресу NULL в модуле C:\WINDOWS\System32\msvcrt.dll. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+С помощью функции signal() вы можете сами обработать эту ошибку.
+
+#2: TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400], Instance: 0x0050A2FC (32-bit), Flags: Cmdre0, Thread: 0x3ACC (Main), GetLastError(): 183 (Невозможно создать файл, так как он уже существует). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x761C96F9 in C:\WINDOWS\System32\msvcrt.dll: strcmp()
+
+# 1 0x0042EB8D in C:\Users\Мария\Desktop\assembler\prog.exe: HandleArgs() at C:/Users/Мария/Desktop/assembler/assembler.cpp (183):
+
+    181:         printf("call MarkLabelRef\n");
+    182:         getchar();
+=>  183:         MarkLabelRef(code, ip, buffer_cut[(*bp)++], table);
+    184:         *bp += 1;
+    185:         return NO_ERRORS;
+
+# 2 0x0042E8EE in C:\Users\Мария\Desktop\assembler\prog.exe: MakeCode() at C:/Users/Мария/Desktop/assembler/assembler.cpp (137):
+
+    135:         printf(CYAN("buffer_cut[%d] = %s\n"), bp, buffer_cut[bp]);
+    136: 
+=>  137:         HandleArgs(code, &ip, buffer_cut, &bp, &table);
+    138: 
+    139:         CodeDump(code, ip);
+
+# 3 0x0042C3C0 in C:\Users\Мария\Desktop\assembler\prog.exe: main() at C:/Users/Мария/Desktop/assembler/main.cpp (53):
+
+     51:     CutBuffer(buffer_cut, buffer, code_size, human.size);
+     52: 
+=>   53:     int* code = MakeCode(&human, buffer_cut, buffer, &code_size);
+     54:     if (code == NULL)
+     55:     {
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\users\мария\codeblocks\mingw\include\txlib.h
+Compiled:	Nov  8 2024 16:28:05, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Nov 08 2024 16:28:14
+
+Run file:	C:\Users\Мария\Desktop\assembler\prog.exe
+Directory:	C:\Users\Мария\Desktop\assembler
+
+--------------------------------------------------

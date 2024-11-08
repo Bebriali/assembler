@@ -8,7 +8,10 @@
 #include "assembler.h"
 #include "color.h"
 #include "commands_def.h"
+#include "debug_info.h"
 #include "error_keys.h"
+#include "label.h"
+#include "match_argscmd.h"
 
 FileInf CreateStructFile(const char* filename, const char* type)
 {
@@ -95,63 +98,300 @@ ErrorKeys CutBuffer(char** code, char* buffer, size_t code_size, size_t buffer_s
 }
 
 
-int* MakeCode(FileInf* file, char** buffer_cut, char* buffer, size_t buffer_cut_size)
+int* MakeCode(FileInf* file, char** buffer_cut, char* buffer, size_t* buffer_cut_size)
 {
     assert(file != NULL);
     assert(buffer_cut != NULL);
     assert(buffer != NULL);
 
-    printf("buffer_cut_size = %d\n", buffer_cut_size);
-    for (size_t i = 0; i < buffer_cut_size; i++)
+    printf("buffer_cut_size = %d\n", *buffer_cut_size);
+    for (size_t i = 0; i < *buffer_cut_size; i++)
     {
         printf(YELLOW("buffer_cut[%d] = '%s'\n"), i, buffer_cut[i]);
     }
     printf("\n");
 
-    int* code = (int*) calloc(buffer_cut_size, sizeof(int)); // check
+    size_t code_size = 3 * (*buffer_cut_size);
+    printf("buffer_cut_size = %d\n", *buffer_cut_size);
+    printf("code_size = %d\n", code_size);
 
-    size_t ip = 0;
-    while (ip < buffer_cut_size)
+    int* code = (int*) calloc(code_size + 1, sizeof(int));
+    if (code == NULL)
     {
-        code[ip] = CommandDefine(buffer_cut[ip]);
-        printf("buffer_cut[%d] = %s\n", ip, buffer_cut[ip]);
-        if (code[ip] == STX_ERR)
-        {
-            printf("syntax error:\n");
-            printf("command: %s doesn't exist\n", buffer_cut[ip]);
-            assert(0);
-        }
-
-        printf(CYAN("code[%d] = %d\n"), ip, code[ip]);
-
-        if (CommandLength((Commands)code[ip]) == 2)
-        {
-            ip++;
-            code[ip] = GetValue(buffer_cut[ip]);
-        }
-
-        ip++;
+        printf("code addr =  %p\n", code);
+        printf(RED("%s: In function '%s':\nline %d\nerror callocation\n"),
+                                      __FILE__, __func__, __LINE__);
+        return NULL;
     }
 
+    struct LabelTable table = {};
+    LabelCtor(&table);
+
+    size_t ip = 0;
+    size_t bp = 0;
+
+    while (bp < *buffer_cut_size)
+    {
+        printf(CYAN("buffer_cut[%d] = %s\n"), bp, buffer_cut[bp]);
+
+        HandleArgs(code, &ip, buffer_cut, &bp, &table);
+
+        CodeDump(code, ip);
+    }
+    free(buffer_cut);
     printf("command line:\n");
-    for (int i = 0; i < 6; i++)
+    for (size_t i = 0; i < ip + 1; i++)
     {
         printf("%d ", code[i]);
     }
     printf("\n");
 
+    *buffer_cut_size = ip + 1;
     return code;
 }
 
-ErrorKeys WriteResult(FileInf* file, int* code, size_t code_size)
+ErrorKeys HandleArgs(CodeCell_t* code, size_t* ip, char** buffer_cut, size_t* bp, LabelTable* table)
 {
-    for (size_t i = 0; i < code_size; i++)
+    size_t args_quantity = 0;
+    size_t bp_fixed = *bp;
+    size_t ip_fixed = *ip;
+
+    if (CheckLabel(buffer_cut[*bp], table))
+    {
+        NewLabel(code, buffer_cut[*bp], table, *ip);
+        *bp += 1;
+        LabelDump(table);
+        return NO_ERRORS;
+    }
+
+    if (CommandDefine(buffer_cut[*bp]) == HLT)
+    {
+        code[*ip] = HLT;
+        *bp += 1;
+        //*ip += 1;
+        return NO_ERRORS;
+    }
+
+    while (CommandDefine(buffer_cut[++(*bp)]) == STX_ERR && !CheckLabel(buffer_cut[*bp], table))
+        args_quantity++;
+
+    *bp = bp_fixed;
+    if (CommandDefine(buffer_cut[*bp]) == JMP && CheckLabel(buffer_cut[*bp + 1], table))
+    {
+        printf("call MarkLabelRef\n");
+        getchar();
+        code[(*ip)] = CommandDefine(buffer_cut[(*bp)++]);
+        code[++(*ip)] = 1;
+        MarkLabelRef(code, ip, buffer_cut[(*bp)], table);
+        *bp += 1;
+        *ip += 1;
+        return NO_ERRORS;
+        args_quantity = 1;
+    }
+    printf(RED("buffer_cut[%d] = %s\n"), *bp, buffer_cut[*bp]);
+    code[*ip] = CommandDefine(buffer_cut[(*bp)++]);
+    CodeDump(code, *ip);
+
+    code[++(*ip)] = 0;
+    for (size_t i = 0; i < *ip + 1; i++)
+    {
+        printf(YELLOW("%d "), code[i]);
+    }
+    printf("\n");
+
+    printf("args_quantity = %d\n", args_quantity);
+    if (args_quantity == 0)
+    {
+        *ip += 1;
+        printf("no args\n");
+        return NO_ERRORS;
+    }
+
+    for (size_t ap = 0; ap < args_quantity; ap++)
+    {
+        printf("buffer_cut[%d] = %s\n", *bp + ap, buffer_cut[*bp + ap]);
+        if (isdigit(buffer_cut[*bp + ap][0]))
+        {
+            code[ip_fixed + 1] = code[ip_fixed + 1] | 1;
+            printf(GREEN("code[%d] = %d\n"), ip_fixed + 1, code[ip_fixed + 1]);
+            code[*ip + ap + 1] = GetValue(buffer_cut[*bp + ap]);
+        }
+        CodeDump(code, *ip);
+    }
+
+    for (size_t ap = 0; ap < args_quantity; ap++)
+    {
+        printf("buffer_cut[%d] = %s\n", *bp + ap, buffer_cut[*bp + ap]);
+        if (isalpha(buffer_cut[*bp + ap][0]) && !CheckLabel(buffer_cut[*bp + ap], table))
+        {
+            code[ip_fixed + 1] = code[ip_fixed + 1] | 2;
+            printf(GREEN("code[%d] = %d\n"), ip_fixed + 1, code[ip_fixed + 1]);
+            code[*ip + ap + 1] = GetArg(buffer_cut[*bp + ap], table);
+        }
+        else if (CheckLabel(buffer_cut[*bp + ap], table))
+        {
+            code[ip_fixed + 1] = code[ip_fixed + 1] | 4;
+            printf(GREEN("code[%d] = %d\n"),  ip_fixed + 1, code[ip_fixed + 1]);
+            code[*ip + ap + 1] = GetArg(buffer_cut[*bp + ap], table);
+        }
+        CodeDump(code, *ip);
+    }
+
+    *bp += args_quantity;
+    *ip += args_quantity + 1;
+
+    return NO_ERRORS;
+}
+
+ErrorKeys HandleArgs2(CodeCell_t* code, size_t* ip, char** buffer_cut, size_t* bp, LabelTable* table)
+{
+    if (CheckLabel(buffer_cut[*bp], table))
+    {
+        NewLabel(code, buffer_cut[*bp], table, *ip);
+        *bp += 1;
+        LabelDump(table);
+        return NO_ERRORS;
+    }
+
+    ArgsCmd cmd_inf = {};
+    if (CommandDefine2(buffer_cut[*bp], &cmd_inf) == STX_ERR)
+    {
+        printf(RED("error in defining command\n\t") "%s: In function '%s':\n\t" "line %d\n\t" "command: %s\n", __FILE__, __func__, __LINE__, buffer_cut[*bp]);
+    }
+
+    code[(*ip)++] = cmd_inf.cmd;
+    if (cmd_inf.args_quantity == 0)
+    {
+        *bp += 1;
+        return NO_ERRORS;
+    }
+
+    PutArgs(cmd_inf, buffer_cut, bp, code, ip, table);
+
+    return NO_ERRORS;
+}
+
+ErrorKeys PutArgs(ArgsCmd cmd_inf, char** buffer_cut, size_t* bp, CodeCell_t* code, size_t* ip, LabelTable* table)
+{
+    ErrorKeys getcmd_status = NO_ERRORS;
+    while (CommandDefine2(buffer_cut[++(*bp)], &cmd_inf) == STX_ERR)
+    {
+        ON_DEBUG(for (size_t i = 0; i < cmd_inf.args_quantity; i++){ printf(MAGENTA("%d "), cmd_inf.args[i]);})
+        printf("\n");
+
+        for (size_t i = 0; i < cmd_inf.args_quantity; i++)
+        {
+            if (!CheckArgType(buffer_cut[(*bp)], cmd_inf.args[i]) && !CheckLabel(buffer_cut[(*bp)], table))
+            {
+                printf("buffer_cut[%d] = %s", *bp, buffer_cut[(*bp)]);
+                printf(RED(" IS NOT "));
+                printf( "cmd_inf.args[%d] = %d\n", i, cmd_inf.args[i]);
+                continue;
+            }
+
+            printf("buffer_cut[%d] = %s", *bp, buffer_cut[(*bp)]);
+            printf( GREEN(" IS "));
+            printf( "cmd_inf.args[%d] = %d\n", i, cmd_inf.args[i]);
+
+            getcmd_status = GetCmd(&code[(*ip)++], buffer_cut[(*bp)++], cmd_inf.args[i], table);
+            break;
+        }
+        printf(GREEN("current bp = %d\n"), *bp);
+        if (CommandDefine2(buffer_cut[*bp], &cmd_inf) != STX_ERR || CheckLabel(buffer_cut[*bp], table))
+            break;
+    }
+
+    return getcmd_status;
+}
+
+bool CheckArgType(char* arg_char, TypeArgs arg_type_val)
+{
+    switch(arg_type_val)
+    {
+        case REG:
+            if (isalpha(arg_char[0]))
+            {
+                return true;
+            }
+            break;
+        case NUM:
+            if (isdigit(arg_char[0]))
+            {
+                return true;
+            }
+            break;
+        case LABEL:
+            for (size_t i = 0; arg_char[i] != '\0'; i++)
+            {
+                if (arg_char[i] == ':' && arg_char[i + 1] == '\0')
+                {
+                    return true;
+                }
+            }
+            break;
+        default:
+            return false;
+    }
+}
+
+ErrorKeys GetCmd(CodeCell_t* arg_value, char* arg_char, TypeArgs arg_type_val, LabelTable* table)
+{
+    ErrorKeys status = NO_ERRORS;
+    switch(arg_type_val)
+    {
+        case REG:
+            printf("getting register\n");
+            *arg_value = GetReg(arg_char);
+            break;
+        case NUM:
+            printf("getting number\n");
+            *arg_value = GetValue(arg_char);
+            break;
+        case LABEL:
+            printf("getting label\n");
+            *arg_value = GetLabel(arg_char, table);
+            break;
+        default:
+            printf(RED("something is wrong with arg_type_val\n") "%s: In function '%s':\n\t""line %d\n", __FILE__, __func__, __LINE__);
+            printf("\targ_type_val = %d\n", arg_type_val);
+            status = EX_ERRORS;
+            *arg_value = (CodeCell_t) HLT;
+            break;
+    }
+
+    return status;
+}
+
+ErrorKeys CodeDump(CodeCell_t* code, size_t ip)
+{
+    printf("ip = %d\n", ip);
+    for (int i = 0; i < (int) ip + 1; i++)
+    {
+        printf(MAGENTA("%2d "), i);
+    }
+    printf("\n");
+    for (int i = 0; i < (int) ip + 1; i++)
+    {
+        printf(MAGENTA("%2d "), code[i]);
+    }
+    printf("\n\n");
+
+    printf("[press enter to continue]  ");
+    getchar();
+
+    return NO_ERRORS;
+}
+
+ErrorKeys WriteResult(FileInf* file, int* code, size_t* code_size)
+{
+    for (size_t i = 0; i < *code_size; i++)
     {
         printf("%d ", code[i]);
     }
     printf("\n\n");
-    fwrite(&code_size, sizeof(int), 1, file->stream);
-    fwrite(code, sizeof(int), code_size, file->stream);
+
+    fwrite(code_size, sizeof(int), 1, file->stream);
+    fwrite(code, sizeof(int), *code_size, file->stream);
 
     return NO_ERRORS;
 }
