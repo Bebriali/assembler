@@ -1,0 +1,37 @@
+IN
+POP AX
+
+PUSH 1
+POP BX
+
+PUSH 1
+POP CX
+
+CALL MAIN:
+
+
+MAIN:       CALL FACT:
+
+            PUSH AX
+            PUSH BX
+
+            JE BREAK:
+
+FACT:       PUSH BX
+            PUSH 1
+            ADD
+            PUSH CX
+            MUL
+
+            PUSH BX
+            PUSH 1
+            ADD
+            POP BX
+
+            POP CX
+
+            ret
+
+BREAK:      PUSH CX
+            OUT
+            HLT

@@ -1,0 +1,171 @@
+        IN
+        POP AX
+        IN
+        POP BX
+        IN
+        POP CX
+
+        PUSH -1
+        POP MLR
+
+        CALL SQ_SOLVER:
+
+MAIN:       PUSH MLR
+            PUSH 0
+            JE NO_ROOTS:
+
+            PUSH MLR
+            PUSH 1
+            JE ONE_ROOT:
+
+            PUSH MLR
+            PUSH 2
+            JE TWO_ROOTS:
+
+            PUSH MLR
+            PUSH -1
+            JE INF_ROOTS:
+
+            HLT
+
+
+SQ_SOLVER:  PUSH AX
+            PUSH 0
+            JE LINEAR_CASE:
+
+
+            CALL DISCR:
+
+            CALL ROOT_ONE:
+
+            CALL ROOT_SEC:
+
+            POP AX
+            POP BX
+
+            ret
+
+
+DISCR:      PUSH BX
+            PUSH BX
+            MUL
+
+            PUSH 4
+            PUSH CX
+            PUSH AX
+            MUL
+            MUL
+            SUB
+
+            POP DX
+
+            PUSH DX
+            PUSH 0
+            JE ONE:
+
+            PUSH DX
+            PUSH 0
+            JA TWO:
+
+            PUSH DX
+            PUSH 0
+            JB ZERO:
+
+            PUSH DX
+            SQR
+            POP DX
+
+            ret
+
+ROOT_ONE:   PUSH BX
+            PUSH -1
+            MUL
+            PUSH DX
+            SUB
+
+            PUSH AX
+            PUSH 2
+            MUL
+
+            DIV
+
+            ret
+
+ROOT_SEC:   PUSH BX
+            PUSH -1
+            MUL
+            PUSH DX
+            ADD
+            PUSH AX
+            PUSH 2
+            MUL
+            DIV
+
+            ret
+
+
+LINEAR_CASE:
+            PUSH BX
+            PUSH 0
+            JE IF_ZERO_C:
+
+            PUSH CX
+            PUSH BX
+            PUSH -1
+            MUL
+
+            DIV
+
+            PUSH 1
+            POP MLR
+
+            POP AX
+
+            JMP MAIN:
+
+
+
+IF_ZERO_C:  PUSH CX
+            PUSH 0
+            JE INF_ROOTS:
+
+            PUSH 0
+            POP MLR
+            JMP NO_ROOTS:
+
+ZERO:       PUSH 0
+            POP MLR
+            JMP MAIN:
+
+ONE:        PUSH 1
+            POP MLR
+
+            ret
+
+TWO:        PUSH 2
+            POP MLR
+
+            ret
+
+
+NO_ROOTS:   PUSH MLR
+            OUT
+            HLT
+
+ONE_ROOT:   PUSH AX
+            OUT
+
+            HLT
+
+TWO_ROOTS:  PUSH AX
+            PUSH BX
+
+            OUT
+            OUT
+
+            HLT
+
+INF_ROOTS:  PUSH MLR
+            OUT
+
+            HLT

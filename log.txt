@@ -1,0 +1,432 @@
+----------MY_STACK DUMP
+
+called from
+file: ../stack/change_stack.cpp
+func: StackInit
+line: 53
+
+capacity = 11
+cur_size = 0
+no elements left in stack
+LEFT CANARY = 973534.000000
+	cell[0] = 0.000000 POIZON
+	cell[1] = 0.000000 POIZON
+	cell[2] = 0.000000 POIZON
+	cell[3] = 0.000000 POIZON
+	cell[4] = 0.000000 POIZON
+	cell[5] = 0.000000 POIZON
+	cell[6] = 0.000000 POIZON
+	cell[7] = 0.000000 POIZON
+	cell[8] = 0.000000 POIZON
+	cell[9] = 0.000000 POIZON
+	cell[10] = 0.000000 POIZON
+RIGHT CANARY = 712410.000000
+----------
+----------MY_STACK DUMP
+
+called from
+file: ../stack/change_stack.cpp
+func: StackInit
+line: 57
+
+capacity = 11
+cur_size = 0
+no elements left in stack
+LEFT CANARY = 973534.000000
+	cell[0] = 0.987654 POIZON
+	cell[1] = 0.987654 POIZON
+	cell[2] = 0.987654 POIZON
+	cell[3] = 0.987654 POIZON
+	cell[4] = 0.987654 POIZON
+	cell[5] = 0.987654 POIZON
+	cell[6] = 0.987654 POIZON
+	cell[7] = 0.987654 POIZON
+	cell[8] = 0.987654 POIZON
+	cell[9] = 0.987654 POIZON
+	cell[10] = 0.987654 POIZON
+RIGHT CANARY = 712410.000000
+----------
+----------MY_STACK DUMP
+
+called from
+file: ../stack/change_stack.cpp
+func: StackInit
+line: 53
+
+capacity = 11
+cur_size = 0
+no elements left in stack
+LEFT CANARY = 973534.000000
+	cell[0] = 0.000000 POIZON
+	cell[1] = 0.000000 POIZON
+	cell[2] = 0.000000 POIZON
+	cell[3] = 0.000000 POIZON
+	cell[4] = 0.000000 POIZON
+	cell[5] = 0.000000 POIZON
+	cell[6] = 0.000000 POIZON
+	cell[7] = 0.000000 POIZON
+	cell[8] = 0.000000 POIZON
+	cell[9] = 0.000000 POIZON
+	cell[10] = 0.000000 POIZON
+RIGHT CANARY = 712410.000000
+----------
+----------MY_STACK DUMP
+
+called from
+file: ../stack/change_stack.cpp
+func: StackInit
+line: 57
+
+capacity = 11
+cur_size = 0
+no elements left in stack
+LEFT CANARY = 973534.000000
+	cell[0] = 0.987654 POIZON
+	cell[1] = 0.987654 POIZON
+	cell[2] = 0.987654 POIZON
+	cell[3] = 0.987654 POIZON
+	cell[4] = 0.987654 POIZON
+	cell[5] = 0.987654 POIZON
+	cell[6] = 0.987654 POIZON
+	cell[7] = 0.987654 POIZON
+	cell[8] = 0.987654 POIZON
+	cell[9] = 0.987654 POIZON
+	cell[10] = 0.987654 POIZON
+RIGHT CANARY = 712410.000000
+----------
+----------MY_STACK DUMP
+
+called from
+file: ../stack/change_stack.cpp
+func: StackInit
+line: 53
+
+capacity = 11
+cur_size = 0
+no elements left in stack
+LEFT CANARY = 973534.000000
+	cell[0] = 0.000000 POIZON
+	cell[1] = 0.000000 POIZON
+	cell[2] = 0.000000 POIZON
+	cell[3] = 0.000000 POIZON
+	cell[4] = 0.000000 POIZON
+	cell[5] = 0.000000 POIZON
+	cell[6] = 0.000000 POIZON
+	cell[7] = 0.000000 POIZON
+	cell[8] = 0.000000 POIZON
+	cell[9] = 0.000000 POIZON
+	cell[10] = 0.000000 POIZON
+RIGHT CANARY = 712410.000000
+----------
+----------MY_STACK DUMP
+
+called from
+file: ../stack/change_stack.cpp
+func: StackInit
+line: 57
+
+capacity = 11
+cur_size = 0
+no elements left in stack
+LEFT CANARY = 973534.000000
+	cell[0] = 0.987654 POIZON
+	cell[1] = 0.987654 POIZON
+	cell[2] = 0.987654 POIZON
+	cell[3] = 0.987654 POIZON
+	cell[4] = 0.987654 POIZON
+	cell[5] = 0.987654 POIZON
+	cell[6] = 0.987654 POIZON
+	cell[7] = 0.987654 POIZON
+	cell[8] = 0.987654 POIZON
+	cell[9] = 0.987654 POIZON
+	cell[10] = 0.987654 POIZON
+RIGHT CANARY = 712410.000000
+----------
+----------MY_STACK DUMP
+
+called from
+file: ../stack/change_stack.cpp
+func: StackInit
+line: 53
+
+capacity = 11
+cur_size = 0
+no elements left in stack
+LEFT CANARY = 973534.000000
+	cell[0] = 0.000000 POIZON
+	cell[1] = 0.000000 POIZON
+	cell[2] = 0.000000 POIZON
+	cell[3] = 0.000000 POIZON
+	cell[4] = 0.000000 POIZON
+	cell[5] = 0.000000 POIZON
+	cell[6] = 0.000000 POIZON
+	cell[7] = 0.000000 POIZON
+	cell[8] = 0.000000 POIZON
+	cell[9] = 0.000000 POIZON
+	cell[10] = 0.000000 POIZON
+RIGHT CANARY = 712410.000000
+----------
+----------MY_STACK DUMP
+
+called from
+file: ../stack/change_stack.cpp
+func: StackInit
+line: 57
+
+capacity = 11
+cur_size = 0
+no elements left in stack
+LEFT CANARY = 973534.000000
+	cell[0] = 0.987654 POIZON
+	cell[1] = 0.987654 POIZON
+	cell[2] = 0.987654 POIZON
+	cell[3] = 0.987654 POIZON
+	cell[4] = 0.987654 POIZON
+	cell[5] = 0.987654 POIZON
+	cell[6] = 0.987654 POIZON
+	cell[7] = 0.987654 POIZON
+	cell[8] = 0.987654 POIZON
+	cell[9] = 0.987654 POIZON
+	cell[10] = 0.987654 POIZON
+RIGHT CANARY = 712410.000000
+----------
+----------MY_STACK DUMP
+
+called from
+file: ../stack/change_stack.cpp
+func: StackInit
+line: 53
+
+capacity = 11
+cur_size = 0
+no elements left in stack
+LEFT CANARY = 973534.000000
+	cell[0] = 0.000000 POIZON
+	cell[1] = 0.000000 POIZON
+	cell[2] = 0.000000 POIZON
+	cell[3] = 0.000000 POIZON
+	cell[4] = 0.000000 POIZON
+	cell[5] = 0.000000 POIZON
+	cell[6] = 0.000000 POIZON
+	cell[7] = 0.000000 POIZON
+	cell[8] = 0.000000 POIZON
+	cell[9] = 0.000000 POIZON
+	cell[10] = 0.000000 POIZON
+RIGHT CANARY = 712410.000000
+----------
+----------MY_STACK DUMP
+
+called from
+file: ../stack/change_stack.cpp
+func: StackInit
+line: 57
+
+capacity = 11
+cur_size = 0
+no elements left in stack
+LEFT CANARY = 973534.000000
+	cell[0] = 0.987654 POIZON
+	cell[1] = 0.987654 POIZON
+	cell[2] = 0.987654 POIZON
+	cell[3] = 0.987654 POIZON
+	cell[4] = 0.987654 POIZON
+	cell[5] = 0.987654 POIZON
+	cell[6] = 0.987654 POIZON
+	cell[7] = 0.987654 POIZON
+	cell[8] = 0.987654 POIZON
+	cell[9] = 0.987654 POIZON
+	cell[10] = 0.987654 POIZON
+RIGHT CANARY = 712410.000000
+----------
+----------MY_STACK DUMP
+
+called from
+file: ../stack/change_stack.cpp
+func: StackInit
+line: 53
+
+capacity = 11
+cur_size = 0
+no elements left in stack
+LEFT CANARY = 973534.000000
+	cell[0] = 0.000000 POIZON
+	cell[1] = 0.000000 POIZON
+	cell[2] = 0.000000 POIZON
+	cell[3] = 0.000000 POIZON
+	cell[4] = 0.000000 POIZON
+	cell[5] = 0.000000 POIZON
+	cell[6] = 0.000000 POIZON
+	cell[7] = 0.000000 POIZON
+	cell[8] = 0.000000 POIZON
+	cell[9] = 0.000000 POIZON
+	cell[10] = 0.000000 POIZON
+RIGHT CANARY = 712410.000000
+----------
+----------MY_STACK DUMP
+
+called from
+file: ../stack/change_stack.cpp
+func: StackInit
+line: 57
+
+capacity = 11
+cur_size = 0
+no elements left in stack
+LEFT CANARY = 973534.000000
+	cell[0] = 0.987654 POIZON
+	cell[1] = 0.987654 POIZON
+	cell[2] = 0.987654 POIZON
+	cell[3] = 0.987654 POIZON
+	cell[4] = 0.987654 POIZON
+	cell[5] = 0.987654 POIZON
+	cell[6] = 0.987654 POIZON
+	cell[7] = 0.987654 POIZON
+	cell[8] = 0.987654 POIZON
+	cell[9] = 0.987654 POIZON
+	cell[10] = 0.987654 POIZON
+RIGHT CANARY = 712410.000000
+----------
+----------MY_STACK DUMP
+
+called from
+file: ../stack/change_stack.cpp
+func: StackInit
+line: 53
+
+capacity = 11
+cur_size = 0
+no elements left in stack
+LEFT CANARY = 973534.000000
+	cell[0] = 0.000000 POIZON
+	cell[1] = 0.000000 POIZON
+	cell[2] = 0.000000 POIZON
+	cell[3] = 0.000000 POIZON
+	cell[4] = 0.000000 POIZON
+	cell[5] = 0.000000 POIZON
+	cell[6] = 0.000000 POIZON
+	cell[7] = 0.000000 POIZON
+	cell[8] = 0.000000 POIZON
+	cell[9] = 0.000000 POIZON
+	cell[10] = 0.000000 POIZON
+RIGHT CANARY = 712410.000000
+----------
+----------MY_STACK DUMP
+
+called from
+file: ../stack/change_stack.cpp
+func: StackInit
+line: 57
+
+capacity = 11
+cur_size = 0
+no elements left in stack
+LEFT CANARY = 973534.000000
+	cell[0] = 0.987654 POIZON
+	cell[1] = 0.987654 POIZON
+	cell[2] = 0.987654 POIZON
+	cell[3] = 0.987654 POIZON
+	cell[4] = 0.987654 POIZON
+	cell[5] = 0.987654 POIZON
+	cell[6] = 0.987654 POIZON
+	cell[7] = 0.987654 POIZON
+	cell[8] = 0.987654 POIZON
+	cell[9] = 0.987654 POIZON
+	cell[10] = 0.987654 POIZON
+RIGHT CANARY = 712410.000000
+----------
+----------MY_STACK DUMP
+
+called from
+file: ../stack/change_stack.cpp
+func: StackInit
+line: 53
+
+capacity = 11
+cur_size = 0
+no elements left in stack
+LEFT CANARY = 973534.000000
+	cell[0] = 0.000000 POIZON
+	cell[1] = 0.000000 POIZON
+	cell[2] = 0.000000 POIZON
+	cell[3] = 0.000000 POIZON
+	cell[4] = 0.000000 POIZON
+	cell[5] = 0.000000 POIZON
+	cell[6] = 0.000000 POIZON
+	cell[7] = 0.000000 POIZON
+	cell[8] = 0.000000 POIZON
+	cell[9] = 0.000000 POIZON
+	cell[10] = 0.000000 POIZON
+RIGHT CANARY = 712410.000000
+----------
+----------MY_STACK DUMP
+
+called from
+file: ../stack/change_stack.cpp
+func: StackInit
+line: 57
+
+capacity = 11
+cur_size = 0
+no elements left in stack
+LEFT CANARY = 973534.000000
+	cell[0] = 0.987654 POIZON
+	cell[1] = 0.987654 POIZON
+	cell[2] = 0.987654 POIZON
+	cell[3] = 0.987654 POIZON
+	cell[4] = 0.987654 POIZON
+	cell[5] = 0.987654 POIZON
+	cell[6] = 0.987654 POIZON
+	cell[7] = 0.987654 POIZON
+	cell[8] = 0.987654 POIZON
+	cell[9] = 0.987654 POIZON
+	cell[10] = 0.987654 POIZON
+RIGHT CANARY = 712410.000000
+----------
+----------MY_STACK DUMP
+
+called from
+file: ../stack/change_stack.cpp
+func: StackInit
+line: 53
+
+capacity = 11
+cur_size = 0
+no elements left in stack
+LEFT CANARY = 973534.000000
+	cell[0] = 0.000000 POIZON
+	cell[1] = 0.000000 POIZON
+	cell[2] = 0.000000 POIZON
+	cell[3] = 0.000000 POIZON
+	cell[4] = 0.000000 POIZON
+	cell[5] = 0.000000 POIZON
+	cell[6] = 0.000000 POIZON
+	cell[7] = 0.000000 POIZON
+	cell[8] = 0.000000 POIZON
+	cell[9] = 0.000000 POIZON
+	cell[10] = 0.000000 POIZON
+RIGHT CANARY = 712410.000000
+----------
+----------MY_STACK DUMP
+
+called from
+file: ../stack/change_stack.cpp
+func: StackInit
+line: 57
+
+capacity = 11
+cur_size = 0
+no elements left in stack
+LEFT CANARY = 973534.000000
+	cell[0] = 0.987654 POIZON
+	cell[1] = 0.987654 POIZON
+	cell[2] = 0.987654 POIZON
+	cell[3] = 0.987654 POIZON
+	cell[4] = 0.987654 POIZON
+	cell[5] = 0.987654 POIZON
+	cell[6] = 0.987654 POIZON
+	cell[7] = 0.987654 POIZON
+	cell[8] = 0.987654 POIZON
+	cell[9] = 0.987654 POIZON
+	cell[10] = 0.987654 POIZON
+RIGHT CANARY = 712410.000000
+----------

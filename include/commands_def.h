@@ -6,13 +6,24 @@
 #include "match_argscmd.h"
 
 Commands CommandDefine(char* command);
-size_t CommandLength(Commands cmd);
+ErrorKeys HandleCommands(int* code, size_t* ip, char** buffer_cut, size_t* bp, RecStk* rec, LabelTable* table);
+
+ErrorKeys JumpCallDefine(RecStk* rec, LabelTable* table, char** buffer_cut, size_t ip, size_t bp);
+
+size_t CommandLength(Commands cmd); //unused
+
 int GetValue(char* command);
+
 int GetArg(char* command, LabelTable* table);
+
+int RetPtr(RecStk* rec, char* command); // move to "label.h" + "label.cpp"
 int GetReg(char* command);
 int GetLabel(char* command, LabelTable* table);
 
-Commands CommandDefine2(char* command, ArgsCmd* cmd_inf);
+char* NameLabel(int place, RecStk* rec); // move to "label.h" + "label.cpp"
 
+Commands CommandDefine2(char* command, ArgsCmd* cmd_inf); // unused
+
+bool JumpType(Commands command); // for backward compatibility
 
 #endif

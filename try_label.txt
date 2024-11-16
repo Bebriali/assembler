@@ -1,3 +1,0 @@
-NEXT:
-JMP NEXT:
-HLT

@@ -24,61 +24,10 @@ int main(int argc, char* argv[])
     FileInf human   = CreateStructFile(argv[1], "rb");
     FileInf machine = CreateStructFile(argv[2], "wb");
 
-    char* buffer = (char*) calloc(human.size, sizeof(char));
-    if (buffer == NULL)
-    {
-        printf(RED("error in buffer calloc\n"));
-        return 0;
-    }
+    ErrorKeys asm_status = Assemble(&human, &machine);
 
-    size_t code_size = GetBuffer(buffer, &human);
-    if (code_size == 0)
-    {
-        printf(RED("error in getting buffer\n"));
-        fclose(human.stream);
-        fclose(machine.stream);
-        free(buffer);
-        return 0;
-    }
+    DtorCodeFile(&human);
+    DtorCodeFile(&machine);
 
-    char** buffer_cut = (char**) calloc(code_size, sizeof(char*));
-    if (buffer_cut == NULL)
-    {
-        printf(RED("error in buffer_cut calloc\n"));
-        return 0;
-    }
-
-    CutBuffer(buffer_cut, buffer, code_size, human.size);
-
-    int* code = MakeCode(&human, buffer_cut, buffer, &code_size);
-    if (code == NULL)
-    {
-        printf("escaping...\n");
-        free(buffer);
-        for (size_t i = 0; i < code_size; i++)
-        {
-            free(buffer_cut[i]);
-        }
-        //free(buffer_cut);
-        fclose(machine.stream);
-        fclose(human.stream);
-        return 0;
-    }
-
-
-    for (size_t i = 0; i < code_size; i++)
-    {
-        printf(CYAN("code[%d] = %d\n"), i, code[i]);
-    }
-
-    WriteResult(&machine, code, &code_size);
-
-    free(code);
-    free(buffer);
-    free(buffer_cut);
-
-    fclose(machine.stream);
-    fclose(human.stream);
-
-    return 0;
+    return asm_status;
 }
